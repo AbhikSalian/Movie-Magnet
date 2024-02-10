@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Registration</title>
+    <title>User Login</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -17,7 +17,7 @@
             height: 100vh;
         }
 
-        .register-container {
+        .user-container {
             border: 2px solid black;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -28,12 +28,12 @@
             background-color: #fff; /* Add background color */
         }
 
-        .register-header {
+        .user-header {
             text-align: center;
             margin-bottom: 1rem;
         }
 
-        .register-form {
+        .user-form {
             margin: 1rem;
         }
 
@@ -51,8 +51,8 @@
             width: 100%;
             padding: 8px;
             box-sizing: border-box;
-            border: 1px solid #ccc; /* Add border to input fields */
-            border-radius: 5px; /* Add border-radius to input fields */
+            border: 1px solid #ccc; 
+            border-radius: 5px; 
         }
 
         .btn {
@@ -74,12 +74,12 @@
             background-color: #2980b9;
         }
 
-        .login-link {
+        .register-link {
             text-align: center;
             margin-top: 10px;
         }
 
-        .login-link a {
+        .register-link a {
             text-decoration: none;
             color: #3498db;
             font-weight: bold;
@@ -88,32 +88,24 @@
 </head>
 
 <body>
-    <div class="register-container">
-        <div class="register-header">
-            <h2>User Registration</h2>
+    <div class="user-container">
+        <div class="user-header">
+            <h2>User Login</h2>
         </div>
-        <form action="insert.php" method="POST" class="register-form">
+        <form action="login1.php" method="POST" class="user-form">
             <div class="pad">
-                <label for="name">Username:</label>
-                <input type="text" name="name" id="name" placeholder="Enter username" class="form-control">
-            </div>
-            <div class="pad">
-                <label for="email">User Email:</label>
-                <input type="email" name="email" id="email" placeholder="Enter user email" class="form-control">
-            </div>
-            <div class="pad">
-                <label for="number">User Number:</label>
-                <input type="number" name="number" id="number" placeholder="Enter user number" class="form-control">
+                <label for="username">Username:</label>
+                <input type="text" name="name" id="username" class="form-control" placeholder="Enter username">
             </div>
             <div class="pad">
                 <label for="password">User Password:</label>
-                <input type="password" name="password" id="password" placeholder="Enter password" class="form-control">
+                <input type="password" name="password" id="password" class="form-control" placeholder="Enter password">
             </div>
             <div class="btn">
-                <button name="submit">Register</button>
+                <button name="submit">Login</button>
             </div>
-            <div class="login-link">
-                <span>Already have an account? </span><a href="user_login.php">Login</a>
+            <div class="register-link">
+                <span>Don't have an account? </span><a href="register.php">Register</a>
             </div>
         </form>
     </div>
