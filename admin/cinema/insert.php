@@ -16,6 +16,6 @@ if(isset($_POST['submit'])){
     $movie_genre=$_POST['genre'];
 
     //insert product
-    mysqli_query($con, " INSERT INTO `cinematable`( `mname`, `desc`, `dir`, `cast`, `date`, `lang`, `duration`, `genre`, `image`) VALUES ('$movie_name','$movie_desc','$movie_dir','$movie_cast','$movie_date','$movie_lang','$movie_duration','$movie_genre',' $img_des')");
+    mysqli_query($con, " INSERT INTO `cinematable`( `mname`, `desc`, `dir`, `cast`, `date`, `lang`, `duration`, `genre`, `image`) VALUES ('$movie_name','$movie_desc','$movie_dir','$movie_cast','$movie_date','$movie_lang','$movie_duration','$movie_genre','$img_des')");
 }
 ?>

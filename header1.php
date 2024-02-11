@@ -178,27 +178,42 @@
 
         /* Add more styles as needed */
         .search {
-            width: 40%;
+            width: 100%;
             display: flex;
             justify-content: center;
-            display: flex;
             align-items: center;
+
         }
 
         .search input {
             height: 30px;
             width: 200px;
             border: none;
+            border: 1.5px solid #B6BBC4;
+
         }
 
-        .search input::placeholder {
-            padding-left: 10px;
+
+        .search input[type=text] {
+            padding: 5px 10px;
         }
 
-        .search i {
-            padding: 6px;
-            border: 1px solid white;
+        .search button {
+            border: 1.5px solid #B6BBC4;
             cursor: pointer;
+            background-color: #B6BBC4;
+            color: #161A30;
+        }
+
+        .fas {
+            transition: transform 0.2s ease-in-out;
+            padding: 7px;
+
+        }
+
+        .fas:hover {
+            transform: scale(1.3);
+            font-weight: bold;
         }
 
         @media only screen and (max-width: 850px) {
@@ -298,15 +313,16 @@
         section.slider {
             padding: 0;
             background: #B6BBC4;
-            height: 80vh;
+            height: 100%;
             width: 100%;
+
         }
 
         section.slider .title {
             font-size: 20px;
             position: relative;
             top: -15px;
-            left: 20px;
+            /* left: 20px; */
         }
 
         .slider-title {
@@ -365,7 +381,7 @@
         }
 
         .slide:hover {
-            border: 3px solid #161A30;
+            border: 3px solid #31304D;
 
         }
 
@@ -379,6 +395,8 @@
             background-color: #B6BBC4;
             padding: 15px;
             width: 100%;
+            /* box-shadow: 0px 0px 20px 1px #161A30; */
+
         }
 
         .slider__track {
@@ -422,15 +440,15 @@
             aspect-ratio: 1/1;
             position: relative;
             border: 1px solid #B6BBC4;
-            border-radius: 13px;
+            /* border-radius: 13px; */
             padding: 3px;
             transition: 0.2s;
         }
 
         .slideimg {
             width: 100%;
-            border-radius: 10px;
-            transition: transform 0.1s ease-in;
+            /* border-radius: 10px; */
+            transition: transform 0.1s ease-in-out;
         }
 
         .slideimg:hover {
@@ -517,9 +535,12 @@
                     <img src="MovieMagnet Logo.png" alt="SmartStitch" width="140px ">
                 </a>
             </div>
-            <div class="search">
-                <input type="text" placeholder="Search for Movies"><i class="fa-solid fa-magnifying-glass" style="color: #b6bbc4;"></i>
-            </div>
+            <form action="search.php" method="GET">
+                <div class="search">
+                    <input type="text" name="q" placeholder="Search for Movies">
+                    <button type="submit"><i class="fas fa-search" style="color: #161A30;"></i></button>
+                </div>
+            </form>
             <div class="nav-list" id="display">
                 <ul class="list-ul">
                     <li><a href="#">Home</a></li>
@@ -562,121 +583,57 @@
         </div>
     </div>
 
+    <?php
+    $genres = array(
+        "action" => "Action",
+        "horror" => "Horror",
+        "crime" => "Crime",
+        "scifi" => "Sci-Fi",
+        "comedy" => "Comedy"
+    );
 
-
-    <section class="slider">
-        <div class="container">
-
-            <div class="slider" data-slider>
-
-                <div class="slider-title">
+    foreach ($genres as $key => $genre) {
+        echo "<section class='slider'>
+        <div class='container'>
+            <div class='slider' data-slider>
+                <div class='slider-title'>
                     <div>
-                        <p class="title">Action</p>
+                        <p class='title'>$genre</p>
                     </div>
-
-                    <div class="slider__buttons">
-                        <button class="slider__button" data-slider-prev disabled>
-                            <i class="fa fa-angle-left"></i>
+                    <div class='slider__buttons'>
+                        <button class='slider__button' data-slider-prev disabled>
+                            <i class='fa fa-angle-left'></i>
                         </button>
-                        <button class="slider__button" data-slider-next>
-                            <i class="fa fa-angle-right"></i>
+                        <button class='slider__button' data-slider-next>
+                            <i class='fa fa-angle-right'></i>
                         </button>
                     </div>
                 </div>
+                <ul class='slider__track' data-slider-track>";
 
-                <ul class="slider__track" data-slider-track>
-                    <li>
-                        <div class="slide">
-                            <img src="img2.jpg" class="slideimg" />
-                           
-                        </div>
-                    </li>
-                    <li>
-                        <div class="slide">
-                            <img src="img2.jpg" class="slideimg" />
-                           
-                        </div>
-                    </li>
-                    <li>
-                        <div class="slide">
-                            <img src="img2.jpg" class="slideimg" />
-                            
-                    </li>
-                    <li>
-                        <div class="slide">
-                            <img src="img2.jpg" class="slideimg" />
-                         
-                        </div>
-                    </li>
-                    <li>
-                        <div class="slide">
-                            <img src="img2.jpg" class="slideimg" />
-                        
-                        </div>
-                    </li>
-                    <li>
-                        <div class="slide">
-                            <img src="img2.jpg" class="slideimg" />
-                       
-                        </div>
-                    </li>
-                    <li>
-                        <div class="slide">
-                            <img src="img2.jpg" class="slideimg" />
-                         
-                    </li>
-                    <li>
-                        <div class="slide">
-                            <img src="img2.jpg" class="slideimg" />
-                      
-                        </div>
-                    </li>
-                    <li>
-                        <div class="slide">
-                            <img src="img2.jpg" class="slideimg" />
-                          
-                        </div>
-                    </li>
-                    <li>
-                        <div class="slide">
-                            <img src="img2.jpg" class="slideimg" />
-                       
-                    </li>
-                    <li>
-                        <div class="slide">
-                            <img src="img/raze.png" class="slideimg" />
-                        
-                        </div>
-                    </li>
-                    <li>
-                        <div class="slide">
-                            <img src="img/jackie.png" class="slideimg" />
-                         
-                        </div>
-                    </li>
-                    <li>
-                        <div class="slide">
-                            <img src="img/phoenix.png" class="slideimg" />
-                   
-                        </div>
-                    </li>
-                    <li>
-                        <div class="slide">
-                            <img src="img/yori.png" class="slideimg" />
-                         
-                    </li>
-                    <li>
-                        <div class="slide">
-                            <img src="img/raze.png" class="slideimg" />
-                        
-                        </div>
-                    </li>
-                </ul>
+        // Database connection
+        $con = mysqli_connect('localhost', 'root', '', 'moviemagnet');
+        $record = mysqli_query($con, "SELECT * FROM cinematable WHERE genre='$key'");
+        while ($row = mysqli_fetch_array($record)) {
+            echo "<li>
+            <a href='info_page.php?movie_id={$row['id']}' class='movie-link'>
+                <div class='slide'>
+                    <img src='admin/cinema/{$row['image']}' class='slideimg'/>
+                </div>
+            </a>
+        </li>";
+        }
 
-
+        echo "</ul>
             </div>
         </div>
-    </section>
+    </section>";
+    }
+
+    // Close database connection
+    // mysqli_close($con);
+    ?>
+
 
     <script>
         const slider = document.querySelector("[data-slider]");
