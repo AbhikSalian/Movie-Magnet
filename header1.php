@@ -1,7 +1,7 @@
 <!-- <?php
-        error_reporting(0);
-        include('config.php');
-        include('login_check.php');
+        // error_reporting(0);
+        // include('config.php');
+        // include('login_check.php');
 
         ?> -->
 <!DOCTYPE html>
@@ -138,13 +138,13 @@
 
         }
 
-        .slide {
+        .slide1 {
             flex: 0 0 100%;
             /* Flex item width */
 
         }
 
-        .slide img {
+        .slide1 img {
             width: 100%;
             height: 100%;
             object-fit: cover;
@@ -279,78 +279,63 @@
 
 
         .container {
-            width: 1355px;
+            width: 100%;
             height: 100%;
             margin: 0 auto;
         }
 
+        /* 
         .center {
             width: 50%;
             height: 50%;
-        }
+        } */
 
         .title {
-            color: #45f882;
-            font-size: 70px;
-        }
-
-        .main_title {
-            color: #fff;
-            font-size: 70px;
-            line-height: 80px;
+            color: #161A30;
+            font-size: 20px
         }
 
         section.slider {
-            padding: 10px 0;
+            padding: 0;
             background: #B6BBC4;
-            height: 100vh;
+            height: 80vh;
+            width: 100%;
         }
 
         section.slider .title {
-            font-size: 42px;
+            font-size: 20px;
             position: relative;
-            top: 24px;
+            top: -15px;
+            left: 20px;
         }
 
         .slider-title {
             display: flex;
             justify-content: space-between;
             align-items: end;
-            margin-bottom: 50px;
+            /* margin-bottom: 50px; */
         }
 
-        .slide_content {
-            position: absolute;
-            bottom: 20px;
-            width: 100%;
-            padding: 0 30px 0 30px;
-            text-align: center;
-        }
 
         button.slider__button {
-            background: #45f882;
-            border: 3px solid #45f882;
-            width: 50px;
-            height: 50px;
-            font-size: 25px;
+            background: #B6BBC4;
+            border: 1px solid #161A30;
+            width: 30px;
+            height: 30px;
+            font-size: 20px;
             cursor: pointer;
             color: #0e0e16;
             opacity: 1 !important;
-            border-radius: 10px;
+            position: relative;
+            top: -15px;
         }
 
         button.slider__button:hover {
-            border: 3px solid #45f882;
-            background: transparent;
-            color: #45f882;
+            border: 1px solid #161A30;
+            background: #31304D;
+            color: #B6BBC4;
         }
 
-        .slide_content p {
-            color: #fff;
-            font-family: charlieUltra;
-            font-size: 22px;
-            letter-spacing: 1px;
-        }
 
         .slider .btns {
             text-align: center;
@@ -380,16 +365,20 @@
         }
 
         .slide:hover {
-            border: 3px solid #45f882;
+            border: 3px solid #161A30;
+
         }
 
         .slider {
             --slider-padding: 1rem;
-            --slider-column-gap: 1rem;
+            --slider-column-gap: .3rem;
             --slide-width: 20%;
-            --slide-min-width: 15rem;
+            --slide-min-width: 10rem;
             position: relative;
             overflow: hidden;
+            background-color: #B6BBC4;
+            padding: 15px;
+            width: 100%;
         }
 
         .slider__track {
@@ -432,14 +421,21 @@
             width: 100%;
             aspect-ratio: 1/1;
             position: relative;
-            border: 3px solid #383c4e;
-            border-radius: 10px;
+            border: 1px solid #B6BBC4;
+            border-radius: 13px;
             padding: 3px;
+            transition: 0.2s;
         }
 
         .slideimg {
             width: 100%;
             border-radius: 10px;
+            transition: transform 0.1s ease-in;
+        }
+
+        .slideimg:hover {
+            transform: scale(1.01);
+
         }
 
         /* Responsive Media Query */
@@ -542,19 +538,19 @@
 
         <div id="banner">
             <div class="slides">
-                <div class="slide">
+                <div class="slide1">
                     <img src="image2.jpg" alt="Slide 1">
                 </div>
-                <div class="slide">
+                <div class="slide1">
                     <img src="image.jpg" alt="Slide 2">
                 </div>
-                <div class="slide">
+                <div class="slide1">
                     <img src="image2.jpg" alt="Slide 3">
                 </div>
-                <div class="slide">
+                <div class="slide1">
                     <img src="image2.jpg" alt="Slide 4">
                 </div>
-                <div class="slide">
+                <div class="slide1">
                     <img src="image2.jpg" alt="Slide 5">
                 </div>
                 <!-- Add more slides as needed -->
@@ -568,157 +564,7 @@
 
 
 
-    <section class="slider">
-        <div class="container">
-
-            <div class="slider" data-slider>
-
-                <div class="slider-title">
-                    <div>
-                        <p class="title">Shop By Category</p>
-                    </div>
-
-                    <div class="slider__buttons">
-                        <button class="slider__button" data-slider-prev disabled>
-                            <i class="fa fa-angle-left"></i>
-                        </button>
-                        <button class="slider__button" data-slider-next>
-                            <i class="fa fa-angle-right"></i>
-                        </button>
-                    </div>
-                </div>
-
-                <ul class="slider__track" data-slider-track>
-                    <li>
-                        <div class="slide">
-                            <img src="img/hunter.png" class="slideimg" />
-                            <div class="slide_content">
-                                <p>Sky Hunter</p>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="slide">
-                            <img src="img/jett.png" class="slideimg" />
-                            <div class="slide_content">
-                                <p>Max Jett</p>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="slide">
-                            <img src="img/stone.png" class="slideimg" />
-                            <div class="slide_content">
-                                <p>BrimStone</p>
-                            </div>
-                    </li>
-                    <li>
-                        <div class="slide">
-                            <img src="img/raze.png" class="slideimg" />
-                            <div class="slide_content">
-                                <p>Mad Raze</p>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="slide">
-                            <img src="img/jackie.png" class="slideimg" />
-                            <div class="slide_content">
-                                <p>Jackie Welles</p>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="slide">
-                            <img src="img/phoenix.png" class="slideimg" />
-                            <div class="slide_content">
-                                <p>Phoenix</p>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="slide">
-                            <img src="img/yori.png" class="slideimg" />
-                            <div class="slide_content">
-                                <p>Yorinobu Ara</p>
-                            </div>
-                    </li>
-                    <li>
-                        <div class="slide">
-                            <img src="img/raze.png" class="slideimg" />
-                            <div class="slide_content">
-                                <p>Mad Raze</p>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="slide">
-                            <img src="img/hunter.png" class="slideimg" />
-                            <div class="slide_content">
-                                <p>Sky Hunter</p>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="slide">
-                            <img src="img/jett.png" class="slideimg" />
-                            <div class="slide_content">
-                                <p>Max Jett</p>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="slide">
-                            <img src="img/stone.png" class="slideimg" />
-                            <div class="slide_content">
-                                <p>BrimStone</p>
-                            </div>
-                    </li>
-                    <li>
-                        <div class="slide">
-                            <img src="img/raze.png" class="slideimg" />
-                            <div class="slide_content">
-                                <p>Mad Raze</p>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="slide">
-                            <img src="img/jackie.png" class="slideimg" />
-                            <div class="slide_content">
-                                <p>Jackie Welles</p>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="slide">
-                            <img src="img/phoenix.png" class="slideimg" />
-                            <div class="slide_content">
-                                <p>Phoenix</p>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="slide">
-                            <img src="img/yori.png" class="slideimg" />
-                            <div class="slide_content">
-                                <p>Yorinobu Ara</p>
-                            </div>
-                    </li>
-                    <li>
-                        <div class="slide">
-                            <img src="img/raze.png" class="slideimg" />
-                            <div class="slide_content">
-                                <p>Mad Raze</p>
-                            </div>
-                        </div>
-                    </li>
-                </ul>
-
-
-            </div>
-        </div>
-    </section>
+    
 
     <script>
         const slider = document.querySelector("[data-slider]");

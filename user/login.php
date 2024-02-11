@@ -8,7 +8,7 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
+            background-color: #B6BBC4;
             margin: 0;
             padding: 0;
             display: flex;
@@ -18,19 +18,20 @@
         }
 
         .user-container {
-            border: 2px solid black;
+            border: 2px solid #161A30;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             width: fit-content;
             padding: 1rem;
             text-align: left;
             margin: auto;
-            background-color: #fff; /* Add background color */
+            background-color: #31304D; /* Add background color */
         }
 
         .user-header {
             text-align: center;
             margin-bottom: 1rem;
+            color: #B6BBC4;
         }
 
         .user-form {
@@ -38,13 +39,13 @@
         }
 
         .pad {
-            margin-bottom: 15px;
+            margin-bottom: 20px;
         }
 
         label {
             display: block;
             margin-bottom: 5px;
-            font-weight: bold; /* Bold labels */
+            color: #B6BBC4;
         }
 
         .form-control {
@@ -62,8 +63,8 @@
 
         button {
             padding: 10px;
-            background-color: #3498db;
-            color: white;
+            background-color: #161A30;
+            color: #F0ECE5;
             border: none;
             cursor: pointer;
             border-radius: 5px;
@@ -71,17 +72,18 @@
         }
 
         button:hover {
-            background-color: #2980b9;
+            opacity: 0.7;
         }
 
         .register-link {
             text-align: center;
             margin-top: 10px;
+            color: #B6BBC4;
         }
 
         .register-link a {
             text-decoration: none;
-            color: #3498db;
+            color: #F0ECE5;
             font-weight: bold;
         }
     </style>
@@ -90,7 +92,7 @@
 <body>
     <div class="user-container">
         <div class="user-header">
-            <h2>User Login</h2>
+            <h2>Login</h2>
         </div>
         <form action="login1.php" method="POST" class="user-form">
             <div class="pad">
@@ -98,7 +100,7 @@
                 <input type="text" name="name" id="username" class="form-control" placeholder="Enter username">
             </div>
             <div class="pad">
-                <label for="password">User Password:</label>
+                <label for="password">Password:</label>
                 <input type="password" name="password" id="password" class="form-control" placeholder="Enter password">
             </div>
             <div class="btn">
