@@ -112,7 +112,7 @@
     </div>
     <div class="chadmi">
         <a href="cinema/index.php">Add Post</a>
-        <a href="userDetails.php">Users</a>
+        <a href="../admin/userDetails.php">Users</a>
     </div>
 </body>
 </html>

@@ -140,28 +140,36 @@
             <thead>
                 <th>Id</th>
                 <th>Name</th>
-                <th>Price</th>
-                <th>Image</th><a href=""></a>
-                <th>Category</th>
+                <th>Director</th>
+                <th>Cast</th>
+                <th>Relese date</th>
+                <th>language</th>
+                <th>Duration</th>
+                <th>image</th><a href=""></a>
+                <th>genre</th>
                 <th>Delete</th>
                 <th>Update</th>
             </thead>
 
             <?php
-//             include 'config.php';
-//             $record = mysqli_query($con, "SELECT * FROM `tblproduct`");
-//             while ($row = mysqli_fetch_array($record))
-//                 echo "
-// <tr>
-//  <td>$row[Id]</td>
-//  <td>$row[Pname]</td>
-//  <td>$row[Pprice]</td>
-//  <td><img src='$row[Pimage]'height=90px></td>
-//  <td>$row[Pcategory]</td>
-//  <td><button><a href='delete.php? ID=$row[Id]'>Delete</a></button></td>
-//  <td><button><a href='update.php? ID=$row[Id]'>Update</a></button></td>
-// </tr>
-// <br>";
+            include '../../config.php';
+            $record = mysqli_query($con, "SELECT * FROM `cinematable`");
+            while ($row = mysqli_fetch_array($record))
+                echo "
+                    <tr>
+                        <td>$row[id]</td>
+                        <td>$row[mname]</td>
+                        <td>$row[dir]</td>
+                        <td>$row[cast]</td>
+                        <td>$row[date]</td>
+                        <td>$row[lang]</td>
+                        <td>$row[duration]</td>
+                        <td><img src='$row[image]'height=90px></td>
+                        <td>$row[genre]</td>
+                        <td><button><a href='delete.php? ID=$row[id]'>Delete</a></button></td>
+                        <td><button><a href='update.php? ID=$row[id]'>Update</a></button></td> 
+                    </tr>
+                    <br>";
             ?>
         </table>
     </div>

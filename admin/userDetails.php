@@ -72,9 +72,9 @@
 
 <body>
     <?php
-    include 'mystore.php';
-    $con = mysqli_connect('localhost', 'root', '', 'ecommerce');
-    $Record = mysqli_query($con, "SELECT * FROM `tbluser`");
+    include 'adminPanel.php';
+    $con = mysqli_connect('localhost', 'root', '', 'moviemagnet');
+    $Record = mysqli_query($con, "SELECT * FROM `user`");
     $row_count = mysqli_num_rows($Record);
     ?>
     <div class="utable">
@@ -98,7 +98,7 @@
                 <td>$row[username]</td>
                 <td>$row[email]</td>
                 <td>$row[number]</td>
-                <td><button><a href='delete.php? ID=$row[Id]'>Delete</a></button></td>
+                <td><button><a href='delete.php? ID=$row[id]'>Delete</a></button></td>
                 </tr>
                 ";
                                         }
