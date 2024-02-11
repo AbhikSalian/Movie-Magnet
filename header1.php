@@ -388,7 +388,7 @@
         .slider {
             --slider-padding: 1rem;
             --slider-column-gap: .3rem;
-            --slide-width: 20%;
+            --slide-width: 17%;
             --slide-min-width: 10rem;
             position: relative;
             overflow: hidden;
@@ -457,7 +457,7 @@
         }
 
         /* Responsive Media Query */
-        @media (max-width: 1400px) {
+        /* @media (max-width: 1400px) {
             .container {
                 width: 90%;
             }
@@ -472,7 +472,7 @@
             .mob-icons {
                 display: none;
             }
-        }
+        } */
 
         @media (max-width: 769px) {
             .main_title {
