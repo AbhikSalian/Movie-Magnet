@@ -12,7 +12,7 @@ if (mysqli_connect_errno()) {
 $searchString = mysqli_real_escape_string($con, $_GET['q']);
 
 // Query to search movies in the database
-$sql = "SELECT * FROM cinematable WHERE mname LIKE '$searchString'";
+$sql = "SELECT * FROM cinematable WHERE mname LIKE '%$searchString%'";
 
 // Perform the query
 $result = mysqli_query($con, $sql);

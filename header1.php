@@ -30,86 +30,10 @@
             font-family: 'hii';
         }
 
-        .nav-div {
-            width: 100%;
-            height: 70px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background-color: #31304D;
-            /* border-bottom: 8px solid #2b300d; */
-        }
 
-        .nav-logo {
-            display: flex;
-            justify-content: center;
-            width: 25%;
-            transition: 0.3s;
-        }
 
-        .nav-logo a {
-            display: flex;
-            align-items: center;
-        }
 
-        .nav-list {
-            width: 30%;
-        }
 
-        .list-ul {
-            display: flex;
-            justify-content: space-evenly;
-            align-items: center;
-        }
-
-        .list-ul li a:not(.noselect) {
-            /* transition: 0.2s; */
-            font-size: 14px;
-            font-weight: bolder;
-            text-transform: uppercase;
-            color: #B6BBC4;
-            padding: 4px 0px 4px 0px;
-        }
-
-        .signout {
-            padding: 8px 15px 8px 15px;
-            /* border-radius: 10px; */
-            border: none;
-            background-color: #31304D;
-            color: #e0e3ce;
-            font-size: 15px;
-            cursor: pointer;
-            transition: 0.2s;
-        }
-
-        .signout:hover {
-            opacity: 0.5;
-        }
-
-        .list-ul li a:hover:not(.noselect) {
-            /* color: #2b300d; */
-            /* background-color: #e0e3ce; */
-            /* border-radius: 4px; */
-            /* opacity: 0.5; */
-            border-bottom: 1.5px solid #B6BBC4;
-
-        }
-
-        .nav-logo a:hover {
-            opacity: 0.5;
-        }
-
-        .nav-menuicon {
-            display: none;
-        }
-
-        a.active {
-            color: #2b300d;
-            background-color: #e0e3ce;
-            padding: 4px 8px 4px 8px;
-            border-radius: 4px;
-
-        }
 
         /* Customize your styles here */
         /* body {
@@ -177,44 +101,7 @@
         }
 
         /* Add more styles as needed */
-        .search {
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
 
-        }
-
-        .search input {
-            height: 30px;
-            width: 200px;
-            border: none;
-            border: 1.5px solid #B6BBC4;
-
-        }
-
-
-        .search input[type=text] {
-            padding: 5px 10px;
-        }
-
-        .search button {
-            border: 1.5px solid #B6BBC4;
-            cursor: pointer;
-            background-color: #B6BBC4;
-            color: #161A30;
-        }
-
-        .fas {
-            transition: transform 0.2s ease-in-out;
-            padding: 7px;
-
-        }
-
-        .fas:hover {
-            transform: scale(1.3);
-            font-weight: bold;
-        }
 
         @media only screen and (max-width: 850px) {
             .nav-list {
@@ -528,37 +415,16 @@
 
 <body>
 
-    <header>
-        <div class="nav-div">
-            <div class="nav-logo">
-                <a href="#">
-                    <img src="MovieMagnet Logo.png" alt="SmartStitch" width="140px ">
-                </a>
-            </div>
-            <form action="search.php" method="GET">
-                <div class="search">
-                    <input type="text" name="q" placeholder="Search for Movies">
-                    <button type="submit"><i class="fas fa-search" style="color: #161A30;"></i></button>
-                </div>
-            </form>
-            <div class="nav-list" id="display">
-                <ul class="list-ul">
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">Movies</a></li>
-                    <li><a href="#">About</a></li>
-                    <li><a href="#">User</a></li>
-                    <li><a class="noselect" href="#"><button class="signout"><i class="fa-solid fa-right-from-bracket" style="color: #B6BBC4;"></i></button></a></li>
-                </ul>
-            </div>
-        </div>
-    </header>
-
-
+    <!-- //header -->
+    <?php
+    include('head.php')
+    ?>
     <!-- Banner with Automatic Slideshow -->
     <div class="bannerMain">
 
         <div id="banner">
             <div class="slides">
+
                 <div class="slide1">
                     <img src="image2.jpg" alt="Slide 1">
                 </div>
@@ -636,47 +502,47 @@
 
 
     <script>
-        const slider = document.querySelector("[data-slider]");
+        document.querySelectorAll("[data-slider]").forEach(slider => {
+            const track = slider.querySelector("[data-slider-track]");
+            const prev = slider.querySelector("[data-slider-prev]");
+            const next = slider.querySelector("[data-slider-next]");
 
-        const track = slider.querySelector("[data-slider-track]");
-        const prev = slider.querySelector("[data-slider-prev]");
-        const next = slider.querySelector("[data-slider-next]");
+            if (track) {
+                prev.addEventListener("click", () => {
+                    next.removeAttribute("disabled");
 
-        if (track) {
-            prev.addEventListener("click", () => {
-                next.removeAttribute("disabled");
-
-                track.scrollTo({
-                    left: track.scrollLeft - track.firstElementChild.offsetWidth,
-                    behavior: "smooth"
+                    track.scrollTo({
+                        left: track.scrollLeft - track.firstElementChild.offsetWidth,
+                        behavior: "smooth"
+                    });
                 });
-            });
 
-            next.addEventListener("click", () => {
-                prev.removeAttribute("disabled");
+                next.addEventListener("click", () => {
+                    prev.removeAttribute("disabled");
 
-                track.scrollTo({
-                    left: track.scrollLeft + track.firstElementChild.offsetWidth,
-                    behavior: "smooth"
+                    track.scrollTo({
+                        left: track.scrollLeft + track.firstElementChild.offsetWidth,
+                        behavior: "smooth"
+                    });
                 });
-            });
 
-            track.addEventListener("scroll", () => {
-                const trackScrollWidth = track.scrollWidth;
-                const trackOuterWidth = track.clientWidth;
+                track.addEventListener("scroll", () => {
+                    const trackScrollWidth = track.scrollWidth;
+                    const trackOuterWidth = track.clientWidth;
 
-                prev.removeAttribute("disabled");
-                next.removeAttribute("disabled");
+                    prev.removeAttribute("disabled");
+                    next.removeAttribute("disabled");
 
-                if (track.scrollLeft <= 0) {
-                    prev.setAttribute("disabled", "");
-                }
+                    if (track.scrollLeft <= 0) {
+                        prev.setAttribute("disabled", "");
+                    }
 
-                if (track.scrollLeft === trackScrollWidth - trackOuterWidth) {
-                    next.setAttribute("disabled", "");
-                }
-            });
-        }
+                    if (track.scrollLeft === trackScrollWidth - trackOuterWidth) {
+                        next.setAttribute("disabled", "");
+                    }
+                });
+            }
+        });
     </script>
 
 
