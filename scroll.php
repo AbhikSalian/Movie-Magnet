@@ -3,127 +3,62 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home page</title>
-    <link rel="stylesheet" href="style.css">
-    <?php 
-    include 'header.php';
-    ?>
+    <title>Movie Review & Rating</title>
+    <style>
+        /* Basic styling for the review section */
+        .review-section {
+            margin-top: 20px;
+        }
+        .review-form {
+            margin-bottom: 20px;
+        }
+        .review {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        .review .user-info {
+            font-weight: bold;
+        }
+        .rating {
+            color: orange;
+        }
+    </style>
 </head>
-<style>
-    body {
-        font-family: Arial, sans-serif;
-        background-color: #f4f4f4;
-        margin: 0;
-        padding: 0;
-    }
-
-    h1 {
-        text-align: center;
-        margin: 20px 0;
-    }
-
-    .cbody {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-around;
-        align-items: stretch;
-        margin: 10px;
-        /* border: 2px solid black;
-        box-sizing: border-box; */
-    }
-    form{
-        box-sizing: border-box;
-        border-radius: 10px;
-        box-shadow: 10px 10px 10px lightblue;
-        margin: 10px;
-    }
-
-    .card {
-        width: 200px;
-        margin: 10px;
-        text-align: center;
-    }
-
-
-    .card-body {
-        padding: 10px;
-    }
-
-    h5, p {
-        font-size: 16px;
-        margin: 4px 0;
-    }
-
-    input {
-        margin: 4px 0;
-        padding: 2px;
-        width: 100%;
-    }
-
-    input[type="submit"] {
-        background-color: #3498db;
-        color: white;
-        border: none;
-        padding: 6px;
-        cursor: pointer;
-    }
-
-    input[type="submit"]:hover {
-        background-color: #2980b9;
-    }
-    .card {
-        overflow: hidden;
-        position: relative;
-        width: 200px; /* Adjust the width as needed */
-    }
-
-    .card img {
-        width: 100%;
-        height: auto;
-        transition: transform 0.3s ease-in-out;
-    }
-
-    .card:hover img {
-        transform: scale(1.1);
-    }
-
-    .card-body {
-        padding: 8px;
-        box-sizing: border-box;
-        background: rgba(255, 255, 255, 0.8);
-    }
-    .card-body h5,
-    .card-body p {
-        margin: 0;
-    }
-
-    .card-body input {
-        margin-top: 4px;
-    }
-</style>
 <body>
-    <div>
-    <h1>Home</h1>
-    <div class='cbody'> 
-            <?php
-            $con = mysqli_connect('localhost', 'root', '', 'moviemagnet');
-            $record = mysqli_query($con, "select * from cinematable");
-            while ($row = mysqli_fetch_array($record)) {
-                if($row['genre']=='action'){
-                
-                    echo "
-                            <div class='card'>admin/cinema/Uploadimage/WhatsApp Image 2024-02-10 at 11.38.35 AM.jpeg
-                                <img src='admin/cinema/$row[image]' class='card-img-top' alt='...'> 
-                                </div>
-                            </div>
-                        ";
-                }
-            }
-            ?>
-        </div>
+    <h1>Movie Review & Rating</h1>
+
+    <!-- Review form -->
+    <div class="review-form">
+        <h2>Write a Review</h2>
+        <form action="submit_review.php" method="post">
+            <input type="hidden" name="movie_id" value="<?php echo $movieId; ?>">
+            <div>
+                <label for="review_content">Review:</label><br>
+                <textarea name="review_content" id="review_content" rows="4" cols="50" required></textarea>
+            </div>
+            <div>
+                <label for="rating">Rating:</label>
+                <input type="number" name="rating" id="rating" min="1" max="5" required>
+            </div>
+            <button type="submit">Submit Review</button>
+        </form>
     </div>
-    <?php 
-    include 'footer.php';
-    ?>
+
+    <!-- Existing reviews -->
+    <div class="review-section">
+        <h2>User Reviews</h2>
+        <?php
+        // Display existing reviews fetched from the database
+        foreach ($reviews as $review) {
+            ?>
+            <div class="review">
+                <p class="user-info"><?php echo $review['username']; ?> - <span class="rating"><?php echo $review['rating']; ?></span></p>
+                <p><?php echo $review['content']; ?></p>
+            </div>
+            <?php
+        }
+        ?>
+    </div>
 </body>
 </html>
