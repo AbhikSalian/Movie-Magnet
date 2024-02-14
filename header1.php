@@ -677,6 +677,119 @@
             </div>
         </div>
     </section>
+    <section class="slider">
+        <div class="container">
+
+            <div class="slider" data-slider>
+
+                <div class="slider-title">
+                    <div>
+                        <p class="title">Action</p>
+                    </div>
+
+                    <div class="slider__buttons">
+                        <button class="slider__button" data-slider-prev disabled>
+                            <i class="fa fa-angle-left"></i>
+                        </button>
+                        <button class="slider__button" data-slider-next>
+                            <i class="fa fa-angle-right"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <ul class="slider__track" data-slider-track>
+                    <li>
+                        <div class="slide">
+                            <img src="img2.jpg" class="slideimg" />
+                           
+                        </div>
+                    </li>
+                    <li>
+                        <div class="slide">
+                            <img src="img2.jpg" class="slideimg" />
+                           
+                        </div>
+                    </li>
+                    <li>
+                        <div class="slide">
+                            <img src="img2.jpg" class="slideimg" />
+                            
+                    </li>
+                    <li>
+                        <div class="slide">
+                            <img src="img2.jpg" class="slideimg" />
+                         
+                        </div>
+                    </li>
+                    <li>
+                        <div class="slide">
+                            <img src="img2.jpg" class="slideimg" />
+                        
+                        </div>
+                    </li>
+                    <li>
+                        <div class="slide">
+                            <img src="img2.jpg" class="slideimg" />
+                       
+                        </div>
+                    </li>
+                    <li>
+                        <div class="slide">
+                            <img src="img2.jpg" class="slideimg" />
+                         
+                    </li>
+                    <li>
+                        <div class="slide">
+                            <img src="img2.jpg" class="slideimg" />
+                      
+                        </div>
+                    </li>
+                    <li>
+                        <div class="slide">
+                            <img src="img2.jpg" class="slideimg" />
+                          
+                        </div>
+                    </li>
+                    <li>
+                        <div class="slide">
+                            <img src="img2.jpg" class="slideimg" />
+                       
+                    </li>
+                    <li>
+                        <div class="slide">
+                            <img src="img/raze.png" class="slideimg" />
+                        
+                        </div>
+                    </li>
+                    <li>
+                        <div class="slide">
+                            <img src="img/jackie.png" class="slideimg" />
+                         
+                        </div>
+                    </li>
+                    <li>
+                        <div class="slide">
+                            <img src="img/phoenix.png" class="slideimg" />
+                   
+                        </div>
+                    </li>
+                    <li>
+                        <div class="slide">
+                            <img src="img/yori.png" class="slideimg" />
+                         
+                    </li>
+                    <li>
+                        <div class="slide">
+                            <img src="img/raze.png" class="slideimg" />
+                        
+                        </div>
+                    </li>
+                </ul>
+
+
+            </div>
+        </div>
+    </section>
 
     <script>
         const slider = document.querySelector("[data-slider]");
