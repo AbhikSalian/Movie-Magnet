@@ -459,7 +459,7 @@
     );
 
     foreach ($genres as $key => $genre) {
-        echo "<section class='slider'>
+        echo "<section id ='movie'  class='slider'>
         <div class='container'>
             <div class='slider' data-slider>
                 <div class='slider-title'>

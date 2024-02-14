@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -101,6 +102,7 @@
             border-radius: 4px;
 
         }
+
         .search {
             width: 100%;
             display: flex;
@@ -141,31 +143,54 @@
         }
     </style>
 </head>
+
 <body>
-<header>
+    <header>
         <div class="nav-div">
             <div class="nav-logo">
-                <a href="#">
+                <a href="header1.php">
                     <img src="MovieMagnet Logo.png" alt="SmartStitch" width="140px ">
                 </a>
             </div>
-            <form action="search.php" method="GET">
+            <form action="head.php" method="GET">
                 <div class="search">
-                    <input type="text" name="q" placeholder="Search for Movies">
-                    <button type="submit"><i class="fas fa-search" style="color: #161A30;"></i></button>
+                    <input type="text" id="searchInput" name="q" placeholder="Search for Movies" oninput="toggleButton()">
+                    <button id="searchButton" type="submit" disabled><i class="fas fa-search" style="color: #161A30;"></i></button>
                 </div>
             </form>
+            
             <div class="nav-list" id="display">
                 <ul class="list-ul">
                     <li><a href="#">Home</a></li>
-                    <li><a href="#">Movies</a></li>
-                    <li><a href="#">About</a></li>
+                    <li><a href="#movie">Movies</a></li>
+                    <li><a href="#about">About</a></li>
                     <li><a href="#">User</a></li>
                     <li><a class="noselect" href="#"><button class="signout"><i class="fa-solid fa-right-from-bracket" style="color: #B6BBC4;"></i></button></a></li>
                 </ul>
             </div>
         </div>
     </header>
+
+
     
+
+
+    <script>
+        function toggleButton() {
+            var input = document.getElementById('searchInput');
+            var button = document.getElementById('searchButton');
+
+            // Disable the button if input field is empty
+            if (input.value.trim() === '') {
+                button.disabled = true;
+
+            } else {
+                button.disabled = false;
+
+            }
+        }
+    </script>
+
 </body>
+
 </html>
