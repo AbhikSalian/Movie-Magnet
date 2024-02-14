@@ -11,7 +11,7 @@
     
     echo "<script> 
     alert('Succesfully login');
-    window.location.href='../header1.php';
+    window.location.href='../index.php';
     </script>";
  }
  else{

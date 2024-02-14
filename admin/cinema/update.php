@@ -171,6 +171,7 @@
         $movie_lang=$_POST['lang'];
         $movie_duration=$_POST['duration'];
         $movie_image=$_FILES['image'];
+        if($movie_image){}
         $image_loc=$_FILES['image']['tmp_name'];
         $image_name=$_FILES['image']['name'];
         $img_des="Uploadimage/".$image_name;

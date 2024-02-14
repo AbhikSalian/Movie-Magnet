@@ -5,81 +5,192 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
     <style>
+        @font-face {
+            font-family: 'hii';
+            src: url('fonts/TT-Norms-sv/TT Norms sv/TTNorms-Regular.otf');
+        }
+
         * {
-            padding: 0;
             margin: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            font-size: 62.5%;
-        }
-
-        nav {
-            display: flex;
-            font-size: 1.6rem;
-            align-items: center;
-            justify-content: space-between;
-            background-color: #474F7A ;
-            height: 6rem;
-            padding: 0 2rem; /* Added padding for better spacing */
-        }
-
-        nav a {
+            padding: 0;
             text-decoration: none;
-            color: white; /* Changed link color to white */
+            box-sizing: border-box;
+            list-style: none;
+            font-family: 'hii';
         }
 
-        .span {
-            width:fit-content;
+        .nav-div {
+            width: 100%;
+            height: 70px;
             display: flex;
-            justify-content: space-around;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #31304D;
+            /* border-bottom: 8px solid #2b300d; */
+        }
+
+        .nav-logo {
+            display: flex;
+            justify-content: center;
+            width: 25%;
+            transition: 0.3s;
+        }
+
+        .nav-logo a {
+            display: flex;
             align-items: center;
         }
 
-        .home,
-        .cart,
-        .hello,
-        .login,
-        .admin {
-            margin-left: 3rem; /* Add margin between items */
+        .nav-list {
+            width: 30%;
         }
 
-     
+        .list-ul {
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+        }
+
+        .list-ul li a:not(.noselect) {
+            /* transition: 0.2s; */
+            font-size: 14px;
+            font-weight: bolder;
+            text-transform: uppercase;
+            color: #B6BBC4;
+            padding: 4px 0px 4px 0px;
+        }
+
+        .signout {
+            padding: 8px 15px 8px 15px;
+            /* border-radius: 10px; */
+            border: none;
+            background-color: #31304D;
+            color: #e0e3ce;
+            font-size: 15px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .signout:hover {
+            opacity: 0.5;
+        }
+
+        .list-ul li a:hover:not(.noselect) {
+            /* color: #2b300d; */
+            /* background-color: #e0e3ce; */
+            /* border-radius: 4px; */
+            /* opacity: 0.5; */
+            border-bottom: 1.5px solid #B6BBC4;
+
+        }
+
+        .nav-logo a:hover {
+            opacity: 0.5;
+        }
+
+        .nav-menuicon {
+            display: none;
+        }
+
+        a.active {
+            color: #2b300d;
+            background-color: #e0e3ce;
+            padding: 4px 8px 4px 8px;
+            border-radius: 4px;
+
+        }
+
+        .search {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+        }
+
+        .search input {
+            height: 30px;
+            width: 200px;
+            border: none;
+            border: 1.5px solid #B6BBC4;
+
+        }
+
+
+        .search input[type=text] {
+            padding: 5px 10px;
+        }
+
+        .search button {
+            border: 1.5px solid #B6BBC4;
+            cursor: pointer;
+            background-color: #B6BBC4;
+            color: #161A30;
+        }
+
+        .fas {
+            transition: transform 0.2s ease-in-out;
+            padding: 7px;
+
+        }
+
+        .fas:hover {
+            transform: scale(1.3);
+            font-weight: bold;
+        }
     </style>
 </head>
 
 <body>
-    <?php 
-    session_start();
-    $count=0;
-    if(isset($_SESSION['cart'])){
-        $count=count($_SESSION['cart']);
-    }
-    ?>
-    <nav>
-        <div>
-            <a href="" style="color: white; font-weight: bold ; font-size:larger;">MovieMagnet</a>
-        </div>
-        <div class="span">
-            <div class="home">
-                <a href="hindex.php" style="font-weight: bold;">Home</a>
+    <header>
+        <div class="nav-div">
+            <div class="nav-logo">
+                <a href="index.php">
+                    <img src="MovieMagnet Logo.png" alt="SmartStitch" width="140px ">
+                </a>
             </div>
-            <div class="cart">
-                <a href="about.php" style="font-weight: bold;">About</a>
-            </div>
-            <div class="hello">
-                <p style="color: white; font-weight: bold; margin-right: 1rem;">Hello,</p>
-            </div>
-            <div class="login">
-                <a href='user_login.php' style='color: white; font-weight: bold;'>Login</a>
-            </div>
-            <div class="admin">
-                <a href="movie.php" style="color: white; font-weight: bold;">Admin</a>
+            <form action="header.php" method="GET">
+                <div class="search">
+                    <input type="text" id="searchInput" name="q" placeholder="Search for Movies" oninput="toggleButton()">
+                    <button id="searchButton" type="submit" disabled><i class="fas fa-search" style="color: #161A30;"></i></button>
+                </div>
+            </form>
+            
+            <div class="nav-list" id="display">
+                <ul class="list-ul">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#movie">Movies</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#">User</a></li>
+                    <li><a class="noselect" href="#"><button class="signout"><i class="fa-solid fa-right-from-bracket" style="color: #B6BBC4;"></i></button></a></li>
+                </ul>
             </div>
         </div>
-    </nav>
+    </header>
+
+
     
+
+
+    <script>
+        function toggleButton() {
+            var input = document.getElementById('searchInput');
+            var button = document.getElementById('searchButton');
+
+            // Disable the button if input field is empty
+            if (input.value.trim() === '') {
+                button.disabled = true;
+
+            } else {
+                button.disabled = false;
+
+            }
+        }
+    </script>
+
 </body>
+
 </html>
