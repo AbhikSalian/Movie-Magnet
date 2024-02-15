@@ -42,6 +42,8 @@ error_reporting(0);
 
 
 
+
+
         /* Customize your styles here */
         /* body {
             background-color: red;
@@ -290,6 +292,7 @@ error_reporting(0);
             padding: 15px;
             width: 100%;
             /* box-shadow: 0px 0px 20px 1px #161A30; */
+            
 
         }
 
@@ -330,19 +333,25 @@ error_reporting(0);
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 100%;
+            width: 190px;
+            height: 300px;
             aspect-ratio: 1/1;
             position: relative;
             border: 1px solid #B6BBC4;
             /* border-radius: 13px; */
             padding: 3px;
             transition: 0.2s;
+          
         }
 
         .slideimg {
-            width: 100%;
+            max-width:100% ;
+            height:100% ;
+            object-fit: cover;
+
             /* border-radius: 10px; */
             transition: transform 0.1s ease-in-out;
+            
         }
 
         .slideimg:hover {
