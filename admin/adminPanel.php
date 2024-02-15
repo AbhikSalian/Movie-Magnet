@@ -91,17 +91,16 @@
 
 </style>
 <?php
-// session_start();
-// if(!$_SESSION['admin']){
-//     header("location:form/login.php");
-// }
+session_start();
+if(!$_SESSION['admin']){
+    header("location:form/login.php");
+}
 ?>
 <body>
     <nav class="nav">
         <div class="ndiv">
             <div class="head"><a><h1>Mystore</h1></a></div>
-            <div class="bar">
-                <div>
+            <div class="bar">Hello, <?php echo $_SESSION['admin']; ?><div>
             <a href="form/logout.php">Logout</a>
             <a href="../user/index.php">Userpanel</a>
             </div>

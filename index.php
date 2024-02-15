@@ -4,6 +4,15 @@
         // include('login_check.php');
 
         ?> -->
+        <?php
+error_reporting(0);
+
+    session_start(); 
+    echo $_SESSION['user'];
+    // if (!$_SESSION['user']) {
+    //     header("location:user/login.php");
+    // }
+    ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -29,8 +38,6 @@
             list-style: none;
             font-family: 'hii';
         }
-
-
 
 
 
@@ -417,7 +424,7 @@
 
     <!-- //header -->
     <?php
-    include('header.php')
+    include('header.php')   
     ?>
     <!-- Banner with Automatic Slideshow -->
     <div class="bannerMain">

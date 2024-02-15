@@ -1,3 +1,13 @@
+<?php
+error_reporting(0);
+
+    // session_start(); 
+    echo $_SESSION['user'];
+    // if (!$_SESSION['user']) {
+    //     header("location:user/login.php");
+    // }
+    ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -144,6 +154,7 @@
     </style>
 </head>
 
+
 <body>
     <header>
         <div class="nav-div">
@@ -165,7 +176,16 @@
                     <li><a href="#movie">Movies</a></li>
                     <li><a href="#about">About</a></li>
                     <li><a href="#">User</a></li>
-                    <li><a class="noselect" href="#"><button class="signout"><i class="fa-solid fa-right-from-bracket" style="color: #B6BBC4;"></i></button></a></li>
+                    <?php 
+                    
+                    if (isset($_SESSION['user'])){
+                       echo "<li><a class='noselect' href='user/logout.php'><button class='signout'><i class='fa-solid fa-right-from-bracket' style='color: #B6BBC4;'></i></button></a></li>";
+                        
+                    }
+                    else{
+                        echo "<li><a class='noselect' href='user/login.php'><button class='signout'>login <i class='fa-solid fa-right-from-bracket' style='color: #B6BBC4;'></i></button></a></li>";
+                    }
+                    ?>
                 </ul>
             </div>
         </div>
