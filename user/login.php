@@ -52,8 +52,10 @@
             width: 100%;
             padding: 8px;
             box-sizing: border-box;
-            border: 1px solid #ccc; 
-            border-radius: 5px; 
+            border : none;
+            border-bottom:  1px solid #B6BBC4; 
+        background: transparent;
+
         }
 
         .btn {
@@ -79,6 +81,7 @@
             text-align: center;
             margin-top: 10px;
             color: #B6BBC4;
+            font-size: 14px;
         }
 
         .register-link a {
@@ -97,11 +100,11 @@
         <form action="login1.php" method="POST" class="user-form">
             <div class="pad">
                 <label for="username">Username:</label>
-                <input type="text" name="name" id="username" class="form-control" placeholder="Enter username">
+                <input type="text" name="name" id="username" class="form-control" placeholder="Enter Username">
             </div>
             <div class="pad">
                 <label for="password">Password:</label>
-                <input type="password" name="password" id="password" class="form-control" placeholder="Enter password">
+                <input type="password" name="password" id="password" class="form-control" placeholder="Enter Password">
             </div>
             <div class="btn">
                 <button name="submit">Login</button>

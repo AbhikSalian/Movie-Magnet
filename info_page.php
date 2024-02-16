@@ -89,9 +89,9 @@ session_start();
 
         }
 
-        .movie-meta {
+        /* .movie-meta {
             /* margin-top: 7px; */
-        }
+        /* }  */
 
         .movie-details-table {
             width: 100%;
@@ -122,8 +122,30 @@ session_start();
             margin: 40px;
             background-color: #B6BBC4;
             overflow-y: scroll;
-            scrollbar-width: none;
+            /* scrollbar-width: ; */
             max-height: 500px;
+        }
+
+        /* width */
+        .review-section::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        /* Track */
+        .review-section::-webkit-scrollbar-track {
+            box-shadow: inset 0 0 5px grey;
+            border-radius: 10px;
+        }
+
+        /* Handle */
+        .review-section::-webkit-scrollbar-thumb {
+            background: #161A30;
+            border-radius: 10px;
+        }
+
+        /* Handle on hover */
+        .review-section::-webkit-scrollbar-thumb:hover {
+            background: #b30000;
         }
 
 
@@ -191,7 +213,8 @@ session_start();
             margin: 10px 0px;
         }
 
-        .sub button,.sub a{
+        .sub button,
+        .sub a {
             display: flex;
             justify-content: center;
             align-items: center;
@@ -204,6 +227,12 @@ session_start();
             font-size: 14px;
 
         }
+
+        .sub button:hover,
+        .sub a:hover {
+            opacity: 0.5;
+        }
+
 
         .ratingicon {
             padding: 3px 15px;
@@ -254,16 +283,27 @@ session_start();
 
         .actualReview {
             color: #161A30;
+            width: fit-content;
+            font-size: 14px;
         }
 
         .reviewOn {
             font-size: 12px;
             color: #393E46;
+            padding-right: 10px;
         }
 
         .links {
             display: flex;
             justify-content: end;
+        }
+
+        .new {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+
         }
     </style>
 
@@ -336,11 +376,11 @@ session_start();
 
                                     // Format the duration
                                     if ($hours > 0 && $minutes > 0) {
-                                        $formattedDuration = "$hours hours $minutes minutes";
+                                        $formattedDuration = "$hours h $minutes m";
                                     } elseif ($hours > 0) {
-                                        $formattedDuration = "$hours hours";
+                                        $formattedDuration = "$hours h";
                                     } elseif ($minutes > 0) {
-                                        $formattedDuration = "$minutes minutes";
+                                        $formattedDuration = "$minutes m";
                                     } else {
                                         $formattedDuration = "Unknown";
                                     }
@@ -417,7 +457,7 @@ session_start();
                     <h3 class="review_title">Reviews</h3>
                     <form id="reviewForm" action="submit_review.php" method="post" onsubmit="return validateForm()">
                         <input type="hidden" name="movie_id" value="<?php echo $movieId; ?>">
-                        <input type="hidden" name="user_id" value="<?php echo $_SESSION['user'];?>">
+                        <input type="hidden" name="user_id" value="<?php echo $_SESSION['user']; ?>">
                         <input class="reviewBox" name="review_content" placeholder="Write your review" required></input>
                         <div class="sub">
                             <div class="rating">
@@ -443,7 +483,7 @@ session_start();
                                 ";
                             }
                             ?>
-                            
+
                         </div>
                     </form>
 
@@ -461,7 +501,7 @@ session_start();
                         FROM reviews 
                         INNER JOIN user ON reviews.user_id = user.id 
                         WHERE reviews.movie_id = '$movie_id'";
-                                      $result = mysqli_query($con, $query);
+                        $result = mysqli_query($con, $query);
 
 
 
@@ -483,7 +523,7 @@ session_start();
                                 } elseif ($interval->m > 0) {
                                     $timeAgo = $interval->format('%mmon ago');
                                 } elseif ($interval->d > 0) {
-                                    $timeAgo = $interval->format('%ddays ago'); 
+                                    $timeAgo = $interval->format('%ddays ago');
                                 } elseif ($interval->h > 0) {
                                     $timeAgo = $interval->format('%hhours ago');
                                 } elseif ($interval->i > 0) {
@@ -498,15 +538,15 @@ session_start();
 
                                 echo "<p class='actualReview'>{$row['username']}</p>";
 
-                                echo "<span class='reviewOn'>{$timeAgo}</span>";
-                                echo "<span class='ratingdis'>";
+                                echo "<div class='new'><div class='reviewOn'>{$timeAgo}</div>";
+                                echo "<div class='ratingdis'";
 
                                 for ($i = 1; $i <= 5; $i++) {
                                     if ($i <= $row['rating']) {
                                         echo "<span class='star'></span>"; // Full star
                                     }
                                 }
-                                echo "</span>";
+                                echo "</div></div>";
                                 echo "</div>";
 
                                 echo "<p class='actualReview'>{$row['review_content']}</p>";

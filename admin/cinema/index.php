@@ -120,11 +120,11 @@
                 <div>
                     <label>Genre</label>
                     <select name="genre">
-                        <option value="action">Action</option>
-                        <option value="scifi">Sci-fi</option>
-                        <option value="horror">Horror</option>
-                        <option value="crime">Crime</option>
-                        <option value="comedy">Comedy</option>
+                        <option value="Action">Action</option>
+                        <option value="Sci-fi">Sci-fi</option>
+                        <option value="Horror">Horror</option>
+                        <option value="Crime">Crime</option>
+                        <option value="Comedy">Comedy</option>
                     </select>
                 </div>
                 <div>

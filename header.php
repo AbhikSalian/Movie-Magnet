@@ -19,6 +19,10 @@ if (mysqli_connect_errno()) {
 
 // Initialize variable to store search results
 $searchResults = '';
+$searchImage = '';
+$searchLang = '';
+$searchGenre = '';
+$searchDur = '';
 
 // Check if the form has been submitted
 if (isset($_GET['q'])) {
@@ -35,7 +39,28 @@ if (isset($_GET['q'])) {
     if (mysqli_num_rows($result) > 0) {
         // Output search results
         while ($row = mysqli_fetch_assoc($result)) {
-            $searchResults .= "<div>{$row['desc']}</div>";
+            $searchImage .= "<div><img class='img' src='admin/cinema/$row[image]' alt=''></div>";
+
+            $searchResults .= "<div class='det'><a href='info_page.php?movie_id={$row['id']}' class='head'>{$row['mname']}</a>";
+            $searchLang .= "<div class='secondline'><div class='res'>{$row['lang']}</div>";
+            $searchGenre .= "<div class='res'>{$row['genre']}</div>";
+
+            // Split the duration into hours, minutes, and seconds
+            list($hours, $minutes, $seconds) = explode(':', $row['duration']);
+
+            // Calculate the total duration in seconds
+            $totalSeconds = ($hours * 3600) + ($minutes * 60) + $seconds;
+
+            // Convert duration from seconds to hours and minutes format
+            $durationHours = floor($totalSeconds / 3600);
+            $durationMinutes = floor(($totalSeconds % 3600) / 60);
+
+            // Format the duration to display hours and minutes
+            $searchDur .= "<div class='res'>{$durationHours}h {$durationMinutes}m</div></div></div>";
+
+
+
+
             // Output other movie details as needed
         }
     } else {
@@ -190,6 +215,68 @@ mysqli_close($con);
             transform: scale(1.3);
             font-weight: bold;
         }
+
+        #searchResults {
+            position: absolute;
+            background-color: #B6BBC4;
+            width: 400px;
+            height: min-content;
+            display: flex;
+            z-index: 1;
+            top: 55px;
+            left: 400px;
+            /* justify-content: center; */
+            align-items: center;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 8px;
+        }
+
+        #searchResults .img {
+            width: 50px;
+            height: 100%;
+            /* margin: 10px; */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+        }
+
+        #searchResults .res {
+            margin: 0px 10px;
+        }
+
+        .secondline {
+            display: flex;
+            justify-content: space-evenly;
+        }
+
+        .res {
+            background-color: #161A30;
+            color: #B6BBC4;
+            font-size: 14px;
+            padding: 2px 10px;
+        }
+
+        .head {
+
+            color: #161A30;
+            margin: 5px;
+            font-weight: bold;
+            font-size: 18px;
+
+        }
+
+        .det {
+            display: flex;
+            flex-direction: column;
+            margin: 10px 10px;
+            height: 60px;
+        }
+
+        .head:hover {
+            text-decoration: underline;
+        }
     </style>
 </head>
 
@@ -203,20 +290,21 @@ mysqli_close($con);
                 </a>
             </div>
             <form action="" method="GET">
-        <div class="search">
-            <input type="text" id="searchInput" name="q" placeholder="Search for Movies" oninput="toggleButton()">
-            <button id="searchButton" type="submit" disabled><i class="fas fa-search" style="color: #161A30;"></i></button>
-        </div>
-    </form>
+                <div class="search">
+                    <input type="text" id="searchInput" name="q" placeholder="Search for Movies" oninput="toggleButton()">
+                    <button id="searchButton" type="submit" disabled><i class="fas fa-search" style="color: #161A30;"></i></button>
+                </div>
+            </form>
 
-    <!-- Display search results -->
-    <div id="searchResults">
-        <?php echo $searchResults; ?>
-    </div>
 
-            <!-- Display search results -->
             <div id="searchResults">
-                <?php echo $searchResults; ?>
+                <?php
+                echo $searchImage;
+                echo $searchResults;
+                echo $searchLang;
+                echo $searchGenre;
+                echo $searchDur;
+                ?>
             </div>
 
             <div class="nav-list" id="display">
@@ -231,7 +319,7 @@ mysqli_close($con);
 
                         echo "<li><a class='noselect' href='user/logout.php'><button class='signout'><i class='fa-solid fa-right-from-bracket' style='color: #B6BBC4;'></i></button></a></li>";
                     } else {
-                        echo "<li><a class='noselect' href='user/login.php'><button class='signout'>login <i class='fa-solid fa-right-from-bracket' style='color: #B6BBC4;'></i></button></a></li>";
+                        echo "<li><a class='noselect' href='user/login.php'><button class='signout' style='background-color:#161A30; color:#B6BBC4; font-size:13px; text-transform:uppercase;'>Login</button></a></li>";
                     }
                     ?>
                 </ul>
@@ -251,10 +339,8 @@ mysqli_close($con);
             // Disable the button if input field is empty
             if (input.value.trim() === '') {
                 button.disabled = true;
-
             } else {
                 button.disabled = false;
-
             }
         }
     </script>
@@ -262,4 +348,3 @@ mysqli_close($con);
 </body>
 
 </html>
-

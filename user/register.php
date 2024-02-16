@@ -53,8 +53,10 @@
             width: 100%;
             padding: 8px;
             box-sizing: border-box;
-            border: 1px solid #ccc; /* Add border to input fields */
-            border-radius: 5px; /* Add border-radius to input fields */
+            border : none;
+            border-bottom:  1px solid #B6BBC4; 
+        background: transparent;
+
         }
 
         .btn {
@@ -78,7 +80,7 @@
 
         .login-link {
             text-align: center;
-            margin-top: 10px;
+            margin-top: 12px;
             color: #B6BBC4;
         }
 
@@ -98,19 +100,19 @@
         <form action="insert.php" method="POST" class="register-form">
             <div class="pad">
                 <label for="name">Username:</label>
-                <input type="text" name="name" id="name" placeholder="Enter username" class="form-control">
+                <input type="text" name="name" id="name" placeholder="Enter Username" class="form-control">
             </div>
             <div class="pad">
                 <label for="email">Email:</label>
-                <input type="email" name="email" id="email" placeholder="Enter user email" class="form-control">
+                <input type="email" name="email" id="email" placeholder="Enter Email" class="form-control">
             </div>
             <div class="pad">
                 <label for="number">Number:</label>
-                <input type="number" name="number" id="number" placeholder="Enter user number" class="form-control">
+                <input type="number" name="number" id="number"  placeholder="Enter Phone Number" class="form-control">
             </div>
             <div class="pad">
                 <label for="password">Password:</label>
-                <input type="password" name="password" id="password" placeholder="Enter password" class="form-control">
+                <input type="password" name="password" id="password" placeholder="Enter Password" class="form-control">
             </div>
             <div class="btn">
                 <button name="submit">Register</button>
