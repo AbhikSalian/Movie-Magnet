@@ -102,7 +102,7 @@ if(!$_SESSION['admin']){
             <div class="head"><a><h1>Mystore</h1></a></div>
             <div class="bar">Hello, <?php echo $_SESSION['admin']; ?><div>
             <a href="form/logout.php">Logout</a>
-            <a href="../user/index.php">Userpanel</a>
+            <a href="../index.php">Userpanel</a>
             </div>
         </div>
     </nav>
@@ -111,7 +111,7 @@ if(!$_SESSION['admin']){
     </div>
     <div class="chadmi">
         <a href="cinema/index.php">Add Post</a>
-        <a href="../admin/userDetails.php">Users</a>
+        <a href="../../movieMagnet/admin/userDetails.php">Users</a>
     </div>
 </body>
 </html>
