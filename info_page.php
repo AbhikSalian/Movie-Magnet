@@ -1,3 +1,19 @@
+<!-- <?php
+        // error_reporting(0);
+        // include('config.php');
+        // include('login_check.php');
+
+        ?> -->
+<?php
+error_reporting(0);
+
+session_start();
+// echo $_SESSION['user'];
+// if (!$_SESSION['user']) {
+//     header("location:user/login.php");
+// }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -16,13 +32,14 @@
             display: flex;
             justify-content: space-evenly;
             background-color: #31304D;
-            height: 570px;
+            height: min-content;
+            min-height: 600px;
             width: 100%;
         }
 
         .movie-image {
             /* flex: 0 0 30%; */
-            width: 30%;
+            width: 40%;
             /* padding: 20px; */
             /* margin: auto; */
             /* background-color: red; */
@@ -33,7 +50,8 @@
 
         .movie-image img {
             /* width: 100%; */
-            height: 470px;
+            width: 75%;
+            /* height: 470px; */
             /* border-radius: 5px; */
             padding: 5px;
             border: 2px solid #161A30;
@@ -41,10 +59,10 @@
 
         .movie-details {
             /* flex: 1; */
-            padding: 40px 0px;
+            padding: 30px 0px;
             width: 40%;
             /* background-color: blue; */
-            line-height: 30px;
+            line-height: 25px;
             color: #F0ECE5;
             word-wrap: break-word;
             display: flex;
@@ -57,6 +75,7 @@
             /* margin-top: 0; */
             width: max-content;
             padding: 5px 20px 5px 20px;
+            margin-bottom: 10px;
             background-color: #161A30;
             color: #B6BBC4;
             font-weight: bold;
@@ -66,11 +85,12 @@
         .movie-description {
             font-size: 16px;
             word-wrap: break-word;
+            color: #B6BBC4;
 
         }
 
         .movie-meta {
-            margin-top: 20px;
+            /* margin-top: 7px; */
         }
 
         .movie-details-table {
@@ -103,7 +123,10 @@
             background-color: #B6BBC4;
             overflow-y: scroll;
             scrollbar-width: none;
+            max-height: 500px;
         }
+
+
 
         .review {
             border-bottom: 1px solid #ccc;
@@ -168,12 +191,17 @@
             margin: 10px 0px;
         }
 
-        .sub button {
+        .sub button,.sub a{
+            display: flex;
+            justify-content: center;
+            align-items: center;
             padding: 0px 20px 0px 20px;
             background-color: #161A30;
             border: none;
             cursor: pointer;
             color: #F0ECE5;
+            text-decoration: none;
+            font-size: 14px;
 
         }
 
@@ -389,6 +417,7 @@
                     <h3 class="review_title">Reviews</h3>
                     <form id="reviewForm" action="submit_review.php" method="post" onsubmit="return validateForm()">
                         <input type="hidden" name="movie_id" value="<?php echo $movieId; ?>">
+                        <input type="hidden" name="user_id" value="<?php echo $_SESSION['user'];?>">
                         <input class="reviewBox" name="review_content" placeholder="Write your review" required></input>
                         <div class="sub">
                             <div class="rating">
@@ -403,7 +432,18 @@
                                 <input type="radio" id="star1" name="rating" value="1">
                                 <label for="star1"></label>
                             </div>
-                            <button id="submitButton" type="submit" disabled>Review</button>
+
+                            <?php
+                            if (isset($_SESSION['user'])) {
+                                echo "<button id='submitButton' type='submit' disabled>Review</button>";
+                            } else {
+
+                                echo "
+                                <a href='user/login.php'>Review</a>
+                                ";
+                            }
+                            ?>
+                            
                         </div>
                     </form>
 
@@ -417,8 +457,13 @@
                         $movie_id = $_GET['movie_id'];
 
                         // Fetch reviews and ratings for the movie from the database
-                        $query = "SELECT * FROM reviews WHERE movie_id = '$movie_id'";
-                        $result = mysqli_query($con, $query);
+                        $query = "SELECT reviews.*, user.username 
+                        FROM reviews 
+                        INNER JOIN user ON reviews.user_id = user.id 
+                        WHERE reviews.movie_id = '$movie_id'";
+                                      $result = mysqli_query($con, $query);
+
+
 
                         if ($result) {
                             // Display reviews and ratings
@@ -434,15 +479,15 @@
 
                                 // Format the time difference in a human-readable format
                                 if ($interval->y > 0) {
-                                    $timeAgo = $interval->format('%y years ago');
+                                    $timeAgo = $interval->format('%yyears ago');
                                 } elseif ($interval->m > 0) {
-                                    $timeAgo = $interval->format('%m months ago');
+                                    $timeAgo = $interval->format('%mmon ago');
                                 } elseif ($interval->d > 0) {
-                                    $timeAgo = $interval->format('%d days ago');
+                                    $timeAgo = $interval->format('%ddays ago'); 
                                 } elseif ($interval->h > 0) {
-                                    $timeAgo = $interval->format('%h hours ago');
+                                    $timeAgo = $interval->format('%hhours ago');
                                 } elseif ($interval->i > 0) {
-                                    $timeAgo = $interval->format('%i minutes ago');
+                                    $timeAgo = $interval->format('%imin ago');
                                 } else {
                                     $timeAgo = 'Just now';
                                 }
@@ -450,6 +495,9 @@
                                 // Output the review with the calculated time ago
                                 echo "<div class='review'>";
                                 echo  "<div class='reviewdis'>";
+
+                                echo "<p class='actualReview'>{$row['username']}</p>";
+
                                 echo "<span class='reviewOn'>{$timeAgo}</span>";
                                 echo "<span class='ratingdis'>";
 

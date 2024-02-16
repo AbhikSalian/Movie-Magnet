@@ -3,12 +3,13 @@
  $Name=$_POST['name'];
  $Password=$_POST['password'] ;
  $con=mysqli_connect('localhost','root','','moviemagnet');
- $result=mysqli_query($con,"SELECT * FROM `user` WHERE (username='$Name' OR email='$Name') AND Userpassword='$Password'");
+ $result = mysqli_query($con, "SELECT id, username, email FROM `user` WHERE (username='$Name' OR email='$Name') AND Userpassword='$Password'");
 
  session_start();
- if(mysqli_num_rows($result)){
-    $_SESSION['user']=$Name;
-    
+ if ($row = mysqli_fetch_assoc($result)) {
+   $_SESSION['user'] = $row['id'];
+   // Other operations with retrieved data...
+
     
     echo "<script> 
     alert('Succesfully login');

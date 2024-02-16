@@ -5,10 +5,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $movie_id = $_POST['movie_id'];
     $review_content = $_POST['review_content'];
     $rating = $_POST['rating'];
+    $user_id=$_POST['user_id'];
+
 
     // Insert review and rating into the database
     $con = mysqli_connect('localhost', 'root', '', 'moviemagnet');
-    $query = "INSERT INTO reviews (movie_id,review_content, rating, timestamp) VALUES ('$movie_id','$review_content', '$rating', NOW())";
+    $query = "INSERT INTO reviews (movie_id,review_content, rating, timestamp, user_id) VALUES ('$movie_id','$review_content', '$rating', NOW(),'$user_id')";
     $result = mysqli_query($con, $query);
 
     if ($result) {

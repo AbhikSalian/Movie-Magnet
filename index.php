@@ -8,7 +8,7 @@
 error_reporting(0);
 
     session_start(); 
-    echo $_SESSION['user'];
+    // echo $_SESSION['user'];
     // if (!$_SESSION['user']) {
     //     header("location:user/login.php");
     // }

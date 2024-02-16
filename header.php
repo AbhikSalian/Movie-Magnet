@@ -1,12 +1,51 @@
 <?php
 error_reporting(0);
 
-    // session_start(); 
-    echo $_SESSION['user'];
-    // if (!$_SESSION['user']) {
-    //     header("location:user/login.php");
-    // }
-    ?>
+// session_start(); 
+// echo $_SESSION['user'];
+// if (!$_SESSION['user']) {
+//     header("location:user/login.php");
+// }
+?>
+<?php
+// Database connection
+$con = mysqli_connect('localhost', 'root', '', 'moviemagnet');
+
+// Check connection
+if (mysqli_connect_errno()) {
+    echo "Failed to connect to MySQL: " . mysqli_connect_error();
+    exit();
+}
+
+// Initialize variable to store search results
+$searchResults = '';
+
+// Check if the form has been submitted
+if (isset($_GET['q'])) {
+    // Get the search query from the form
+    $searchString = mysqli_real_escape_string($con, $_GET['q']);
+
+    // Query to search movies in the database
+    $sql = "SELECT * FROM cinematable WHERE mname LIKE '%$searchString%'";
+
+    // Perform the query
+    $result = mysqli_query($con, $sql);
+
+    // Check if there are any results
+    if (mysqli_num_rows($result) > 0) {
+        // Output search results
+        while ($row = mysqli_fetch_assoc($result)) {
+            $searchResults .= "<div>{$row['desc']}</div>";
+            // Output other movie details as needed
+        }
+    } else {
+        $searchResults = "No results found";
+    }
+}
+
+// Close database connection
+mysqli_close($con);
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -163,26 +202,35 @@ error_reporting(0);
                     <img src="MovieMagnet Logo.png" alt="SmartStitch" width="140px ">
                 </a>
             </div>
-            <form action="header.php" method="GET">
-                <div class="search">
-                    <input type="text" id="searchInput" name="q" placeholder="Search for Movies" oninput="toggleButton()">
-                    <button id="searchButton" type="submit" disabled><i class="fas fa-search" style="color: #161A30;"></i></button>
-                </div>
-            </form>
-            
+            <form action="" method="GET">
+        <div class="search">
+            <input type="text" id="searchInput" name="q" placeholder="Search for Movies" oninput="toggleButton()">
+            <button id="searchButton" type="submit" disabled><i class="fas fa-search" style="color: #161A30;"></i></button>
+        </div>
+    </form>
+
+    <!-- Display search results -->
+    <div id="searchResults">
+        <?php echo $searchResults; ?>
+    </div>
+
+            <!-- Display search results -->
+            <div id="searchResults">
+                <?php echo $searchResults; ?>
+            </div>
+
             <div class="nav-list" id="display">
                 <ul class="list-ul">
                     <li><a href="#">Home</a></li>
                     <li><a href="#movie">Movies</a></li>
                     <li><a href="#about">About</a></li>
-                    <li><a href="#">User</a></li>
-                    <?php 
-                    
-                    if (isset($_SESSION['user'])){
-                       echo "<li><a class='noselect' href='user/logout.php'><button class='signout'><i class='fa-solid fa-right-from-bracket' style='color: #B6BBC4;'></i></button></a></li>";
-                        
-                    }
-                    else{
+
+                    <?php
+
+                    if (isset($_SESSION['user'])) {
+
+                        echo "<li><a class='noselect' href='user/logout.php'><button class='signout'><i class='fa-solid fa-right-from-bracket' style='color: #B6BBC4;'></i></button></a></li>";
+                    } else {
                         echo "<li><a class='noselect' href='user/login.php'><button class='signout'>login <i class='fa-solid fa-right-from-bracket' style='color: #B6BBC4;'></i></button></a></li>";
                     }
                     ?>
@@ -192,7 +240,7 @@ error_reporting(0);
     </header>
 
 
-    
+
 
 
     <script>
@@ -214,3 +262,4 @@ error_reporting(0);
 </body>
 
 </html>
+
