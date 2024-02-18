@@ -1,13 +1,6 @@
 <?php
 error_reporting(0);
 
-// session_start(); 
-// echo $_SESSION['user'];
-// if (!$_SESSION['user']) {
-//     header("location:user/login.php");
-// }
-?>
-<?php
 // Database connection
 $con = mysqli_connect('localhost', 'root', '', 'moviemagnet');
 
@@ -25,9 +18,9 @@ $searchGenre = '';
 $searchDur = '';
 
 // Check if the form has been submitted
-if (isset($_GET['q'])) {
+if (isset($_POST['q'])) {
     // Get the search query from the form
-    $searchString = mysqli_real_escape_string($con, $_GET['q']);
+    $searchString = mysqli_real_escape_string($con, $_POST['q']);
 
     // Query to search movies in the database
     $sql = "SELECT * FROM cinematable WHERE mname LIKE '%$searchString%'";
@@ -57,9 +50,6 @@ if (isset($_GET['q'])) {
 
             // Format the duration to display hours and minutes
             $searchDur .= "<div class='res'>{$durationHours}h {$durationMinutes}m</div></div></div>";
-
-
-
 
             // Output other movie details as needed
         }
@@ -109,7 +99,7 @@ mysqli_close($con);
         .nav-logo {
             display: flex;
             justify-content: center;
-            width: 25%;
+            width: 26%;
             transition: 0.3s;
         }
 
@@ -119,7 +109,7 @@ mysqli_close($con);
         }
 
         .nav-list {
-            width: 30%;
+            width: 25%;
         }
 
         .list-ul {
@@ -170,10 +160,7 @@ mysqli_close($con);
         }
 
         a.active {
-            color: #2b300d;
-            background-color: #e0e3ce;
-            padding: 4px 8px 4px 8px;
-            border-radius: 4px;
+            border-bottom: 1.5px solid #B6BBC4;
 
         }
 
@@ -217,6 +204,7 @@ mysqli_close($con);
         }
 
         #searchResults {
+            display: none;
             position: absolute;
             background-color: #B6BBC4;
             width: 400px;
@@ -277,9 +265,35 @@ mysqli_close($con);
         .head:hover {
             text-decoration: underline;
         }
+
+        #closeButton {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            border: none;
+            background: transparent;
+            cursor: pointer;
+            padding: 1px 4px;
+            border-radius: 100%;
+            text-decoration: none;
+
+        }
+
+        #closeButton:hover {
+            background-color: #161A30;
+            color: #e0e3ce;
+
+        }
+
+        #linke {
+            color: #161A30;
+        }
+
+        #linke:hover {
+            color: #e0e3ce;
+        }
     </style>
 </head>
-
 
 <body>
     <header>
@@ -289,16 +303,27 @@ mysqli_close($con);
                     <img src="MovieMagnet Logo.png" alt="SmartStitch" width="140px ">
                 </a>
             </div>
-            <form action="" method="GET">
+            <form id="searchForm" action="" method="POST">
                 <div class="search">
                     <input type="text" id="searchInput" name="q" placeholder="Search for Movies" oninput="toggleButton()">
-                    <button id="searchButton" type="submit" disabled><i class="fas fa-search" style="color: #161A30;"></i></button>
+                    <button id="searchButton" type="submit" onclick="showSearchResults()"><i class="fas fa-search" style="color: #161A30;"></i></button>
                 </div>
             </form>
 
-
-            <div id="searchResults">
+            <div id="searchResults" <?php if (empty($_POST['q'])) {
+                                        echo 'style="display: none;"';
+                                    } ?>>
                 <?php
+                $currentURL = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+
+                if (strpos($currentURL, 'index.php') !== false) {
+                    // Code specific to index.php
+                    echo '<button id="closeButton" onclick="closeSearchResults()"><a id="linke" href="index.php">X</a></button>';
+                } elseif (strpos($currentURL, 'info_page.php') !== false) {
+                    // Code specific to info_page.php
+                    echo '<button id="closeButton" onclick="reloadInfoPage()">X</button>';
+                }
+
                 echo $searchImage;
                 echo $searchResults;
                 echo $searchLang;
@@ -307,16 +332,31 @@ mysqli_close($con);
                 ?>
             </div>
 
+            <script>
+                function reloadInfoPage() {
+                    var currentURL = window.location.href;
+                    window.location.href = currentURL; // Reload the page with the current URL
+                }
+            </script>
+
             <div class="nav-list" id="display">
+                <?php
+                // Get the current page URL
+                $currentURL = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+
+                // Function to check if a given URL is the current page
+                function isActive($url)
+                {
+                    global $currentURL;
+                    return strpos($currentURL, $url) !== false ? 'active' : '';
+                }
+                ?>
                 <ul class="list-ul">
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#movie">Movies</a></li>
-                    <li><a href="#about">About</a></li>
-
+                    <li><a href="index.php" class="<?php echo isActive('index.php'); ?>">Home</a></li>
+                    <li><a href="index.php#movie" class="<?php echo isActive('index.php#movie'); ?>">Movies</a></li>
+                    <li><a href="admin/form/login.php">Admin</a></li>
                     <?php
-
                     if (isset($_SESSION['user'])) {
-
                         echo "<li><a class='noselect' href='user/logout.php'><button class='signout'><i class='fa-solid fa-right-from-bracket' style='color: #B6BBC4;'></i></button></a></li>";
                     } else {
                         echo "<li><a class='noselect' href='user/login.php'><button class='signout' style='background-color:#161A30; color:#B6BBC4; font-size:13px; text-transform:uppercase;'>Login</button></a></li>";
@@ -327,15 +367,10 @@ mysqli_close($con);
         </div>
     </header>
 
-
-
-
-
     <script>
         function toggleButton() {
             var input = document.getElementById('searchInput');
             var button = document.getElementById('searchButton');
-
             // Disable the button if input field is empty
             if (input.value.trim() === '') {
                 button.disabled = true;
@@ -343,8 +378,26 @@ mysqli_close($con);
                 button.disabled = false;
             }
         }
-    </script>
 
+        function showSearchResults() {
+            var input = document.getElementById('searchInput');
+            var button = document.getElementById('searchButton');
+            // Disable the button if input field is empty
+            var resultsContainer = document.getElementById('searchResults');
+            if (input.value.trim() === '') {
+                button.disabled = true;
+            } else {
+                button.disabled = false;
+                resultsContainer.style.display = 'flex';
+            }
+
+        }
+
+        function closeSearchResults() {
+            var resultsContainer = document.getElementById('searchResults');
+            resultsContainer.style.display = 'none';
+        }
+    </script>
 </body>
 
 </html>

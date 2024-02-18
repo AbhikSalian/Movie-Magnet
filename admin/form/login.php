@@ -7,15 +7,20 @@
     <title>login</title>
 </head>
 <style>
-
-.admin {
+    .admin {
         border: 2px solid black;
-        border-radius: 10px; /* Add border-radius for rounded corners */
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add shadow effect */
+        border-radius: 10px;
+        /* Add border-radius for rounded corners */
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        /* Add shadow effect */
         width: fit-content;
         padding: .4rem;
-        text-align: left; /* Center text in the div */
-        margin: auto; /* Center the div horizontally */
+        text-align: left;
+        /* Center text in the div */
+        margin: auto;
+        /* Center the div horizontally */
+        background-color: #31304D;
+        color: #B6BBC4 ;
     }
 
     .center {
@@ -30,9 +35,10 @@
         font-size: 1.6rem;
         text-align: center;
     }
+
     body {
         font-family: Arial, sans-serif;
-        background-color: #f4f4f4;
+        background-color: #B6BBC4;
         margin: 0;
         padding: 0;
         display: flex;
@@ -53,35 +59,42 @@
     }
 
     .form-control {
-        width: 100%;
-        padding: 8px;
-        box-sizing: border-box;
-    }
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+            border : none;
+            border-bottom:  1px solid #B6BBC4; 
+        background: transparent;
+
+        }
+        ::placeholder {
+  color: #161A30;
+}
 
     .btn {
         text-align: center;
     }
 
     button {
-        padding: 10px;
-        background-color: #4caf50;
+        padding: 10px 20px;
+        background-color: #161A30;
         color: white;
         border: none;
         cursor: pointer;
-        border-radius: 5px;
+        margin-bottom: 10px;
     }
 
     button:hover {
-        background-color: #45a049;
+        background-color: #B6BBC4;
+        color:#161A30
     }
-  
 </style>
 
 <body>
     <div class="admin">
         <form action="login1.php" method="POST">
             <div class="adm">
-                <p>Admin login</p>
+                <p>Admin</p>
                 <img src="admin.jpg" class="center">
             </div>
             <div class="pad">

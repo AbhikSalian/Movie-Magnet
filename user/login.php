@@ -57,6 +57,9 @@
         background: transparent;
 
         }
+        ::placeholder {
+  color: #161A30;
+}
 
         .btn {
             text-align: center;

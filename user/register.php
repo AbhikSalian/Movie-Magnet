@@ -89,6 +89,9 @@
             color: #F0ECE5;
             font-weight: bold;
         }
+        ::placeholder {
+  color: #161A30;
+}
     </style>
 </head>
 
