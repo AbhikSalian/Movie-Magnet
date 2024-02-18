@@ -1,9 +1,3 @@
-<!-- <?php
-        // error_reporting(0);
-        // include('config.php');
-        // include('login_check.php');
-
-        ?> -->
 <?php
 error_reporting(0);
 session_start();
@@ -19,7 +13,7 @@ session_start();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>MovieMagnet - Details</title>
     <style>
         * {
             margin: 0%;

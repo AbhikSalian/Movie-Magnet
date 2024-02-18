@@ -1,18 +1,12 @@
-<!-- <?php
-        // error_reporting(0);
-        // include('config.php');
-        // include('login_check.php');
-
-        ?> -->
-        <?php
+<?php
 error_reporting(0);
 
-    session_start(); 
-    // echo $_SESSION['user'];
-    // if (!$_SESSION['user']) {
-    //     header("location:user/login.php");
-    // }
-    ?>
+session_start();
+// echo $_SESSION['user'];
+// if (!$_SESSION['user']) {
+//     header("location:user/login.php");
+// }
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -20,7 +14,7 @@ error_reporting(0);
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Header</title>
+    <title>MovieMagnet - Home</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="icon" type="image/x-icon" href="Images/Favicon.png">
 
@@ -292,7 +286,7 @@ error_reporting(0);
             padding: 15px;
             width: 100%;
             /* box-shadow: 0px 0px 20px 1px #161A30; */
-            
+
 
         }
 
@@ -341,17 +335,17 @@ error_reporting(0);
             /* border-radius: 13px; */
             padding: 3px;
             transition: 0.2s;
-          
+
         }
 
         .slideimg {
-            max-width:100% ;
-            height:100% ;
+            max-width: 100%;
+            height: 100%;
             object-fit: cover;
 
             /* border-radius: 10px; */
             transition: transform 0.1s ease-in-out;
-            
+
         }
 
         .slideimg:hover {
@@ -433,7 +427,7 @@ error_reporting(0);
 
     <!-- //header -->
     <?php
-    include('header.php')   
+    include('header.php')
     ?>
     <!-- Banner with Automatic Slideshow -->
     <div class="bannerMain">
