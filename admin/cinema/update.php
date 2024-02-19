@@ -151,7 +151,7 @@
             </div>
             <div class="div">
                     <label style="padding-left: 4rem;">Movie Image</label>
-                    <input type="file" name="image">
+                    <input type="file" name="image" value="<?php echo $data['image']; ?>">
                     <img class="img" src="<?php echo $data['image'] ?>" alt="">
             </div>
             
@@ -170,12 +170,17 @@
         $movie_date=$_POST['date'];
         $movie_lang=$_POST['lang'];
         $movie_duration=$_POST['duration'];
-        $movie_image=$_FILES['image'];
-        $image_loc=$_FILES['image']['tmp_name'];
-        $image_name=$_FILES['image']['name'];
-        $img_des="Uploadimage/".$image_name;
-        move_uploaded_file($image_loc,"Uploadimage/".$image_name);
         $movie_genre=$_POST['genre'];
+        if (!empty($_FILES['image']['name'])) {
+            $movie_image = $_FILES['image'];
+            $image_loc = $_FILES['image']['tmp_name'];
+            $image_name = $_FILES['image']['name'];
+            $img_des = "Uploadimage/" . $image_name;
+            move_uploaded_file($image_loc, "Uploadimage/" . $image_name);
+        } else {
+            // No new image uploaded, retain the existing image
+            $img_des = $data['image'];
+        }
 
         include '../../config.php';
         mysqli_query($con, "UPDATE `cinematable` SET `mname`='$movie_name',`desc`='$movie_desc',`dir`='$movie_dir',`cast`='$movie_cast',`date`='$movie_date',`lang`='$movie_lang',`duration`='$movie_duration',`image`='$img_des',`genre`='$movie_genre' WHERE id=$id");
