@@ -8,6 +8,8 @@ if(isset($_POST['submit'])){
     $movie_date=$_POST['date'];
     $movie_lang=$_POST['lang'];
     $movie_duration=$_POST['duration'];
+    $trailer_link=$_POST['trailer_link'];
+    $movie_link=$_POST['movie_link'];
     $movie_image=$_FILES['image'];
     $image_loc=$_FILES['image']['tmp_name'];
     $image_name=$_FILES['image']['name'];
@@ -16,6 +18,6 @@ if(isset($_POST['submit'])){
     $movie_genre=$_POST['genre'];
 
     //insert product
-    mysqli_query($con, " INSERT INTO `cinematable`( `mname`, `desc`, `dir`, `cast`, `date`, `lang`, `duration`, `genre`, `image`) VALUES ('$movie_name','$movie_desc','$movie_dir','$movie_cast','$movie_date','$movie_lang','$movie_duration','$movie_genre','$img_des')");
+    mysqli_query($con, " INSERT INTO `cinematable`( `mname`, `desc`, `dir`, `cast`, `date`, `lang`, `duration`,`trailer_link`,`movie_link`, `genre`, `image`) VALUES ('$movie_name','$movie_desc','$movie_dir','$movie_cast','$movie_date','$movie_lang','$movie_duration','$trailer_link','$movie_link','$movie_genre','$img_des')");
 }
 ?>

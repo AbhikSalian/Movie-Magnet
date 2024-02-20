@@ -440,8 +440,9 @@ session_start();
                         }
                         ?>
                     </div> <!-- Close movie-meta -->
-                    <div class="links"><a class="link" href="#">Trailer</a>
-                        <a class="link" href="#">Watch Now</a>
+                    <div class="links">
+                        <a class="link" href="<?php echo $movie['trailer_link']; ?>" target="_blank">Trailer</a>
+                        <a class="link" href="<?php echo $movie['movie_link']; ?>" target="_blank">Watch Now</a>
                     </div>
                 </div> <!-- Close movie-details -->
 

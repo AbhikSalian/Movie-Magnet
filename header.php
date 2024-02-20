@@ -68,7 +68,7 @@ mysqli_close($con);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Header</title>
+    <title>MovieMagnet - Header</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <style>
@@ -128,18 +128,21 @@ mysqli_close($con);
         }
 
         .signout {
-            padding: 8px 15px 8px 15px;
+            padding: 5px 10px;
             /* border-radius: 10px; */
             border: none;
-            background-color: #31304D;
+            background-color: #161A30;
             color: #e0e3ce;
             font-size: 15px;
             cursor: pointer;
-            transition: 0.2s;
+            border: 1px solid #161A30;
         }
 
         .signout:hover {
-            opacity: 0.5;
+            background-color: #161A30;
+            color: #161A30;
+            border: 1px solid #B6BBC4;
+
         }
 
         .list-ul li a:hover:not(.noselect) {
@@ -353,7 +356,6 @@ mysqli_close($con);
                 ?>
                 <ul class="list-ul">
                     <li><a href="index.php" class="<?php echo isActive('index.php'); ?>">Home</a></li>
-                    <li><a href="index.php#movie" class="<?php echo isActive('index.php#movie'); ?>">Movies</a></li>
                     <li><a href="admin/form/login.php">Admin</a></li>
                     <?php
                     if (isset($_SESSION['user'])) {

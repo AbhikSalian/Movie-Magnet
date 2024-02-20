@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Product page</title>
+    <title>MovieMagnet - Update</title>
 </head>
 <style>
     body {
@@ -15,7 +15,7 @@
     }
 
     .container {
-        width: fit-content;
+        width: max-content;
         border: 2px solid black;
         border-radius: 8px;
         text-align: center;
@@ -29,14 +29,19 @@
     }
 
     .div {
+        display: flex;
+        align-items: center;
         margin-bottom: 10px;
     }
-    .opt{
+
+    .opt {
         text-align: center;
     }
 
     label {
         font-weight: bold;
+        width: 200px;
+        text-align: left;
     }
 
     input[type="text"],
@@ -53,9 +58,10 @@
     }
 
     img.img {
-        width: 160px;
+        width: 60px;
         margin-top: 10px;
     }
+
 
     button[name="update"] {
         padding: 10px;
@@ -69,10 +75,41 @@
     button[name="update"]:hover {
         background-color: #2980b9;
     }
+
+    .div:nth-child(6) input {
+        width: 200px;
+        text-align: left;
+        height: 35.5px;
+        margin-bottom: 10px;
+
+
+    }
+    .div:nth-child(6) {
+        width: 400px;
+    }
+    .div:nth-child(8) {
+        width: 400px;
+    }
+
+    .div:nth-child(8) input {
+        width: 200px;
+        height: 35.5px;
+        text-align: left;
+        margin-bottom: 10px;
+
+    }
+    .div:nth-child(12) input {
+        width: 200px;
+        height: 35.5px;
+        text-align: left;
+        margin-bottom: 10px;
+
+    }
+    
 </style>
 
 <body>
-<?php
+    <?php
     $id = isset($_GET['ID']) ? $_GET['ID'] : null;
 
     if ($id !== null) {
@@ -124,37 +161,45 @@
                 <input type="text" value="<?php echo $data['dir'] ?>" name="dir" class="form-control" placeholder="Enter Director's name">
             </div>
             <div class="div">
-                    <label>Cast:</label>
-                    <input type="text" value="<?php echo $data['cast'] ?>" name="cast" class="form-control" placeholder="Enter Cast">
+                <label>Cast:</label>
+                <input type="text" value="<?php echo $data['cast'] ?>" name="cast" class="form-control" placeholder="Enter Cast">
             </div>
             <div class="div">
-                    <label>Release date:</label>
-                    <input type="date" value="<?php echo $data['date'] ?>" name="date" class="form-control" placeholder="Enter Release date">
+                <label>Release date:</label>
+                <input type="date" value="<?php echo $data['date'] ?>" name="date" class="form-control" placeholder="Enter Release date">
             </div>
             <div class="div">
-                    <label>Language:</label>
-                    <input type="text" value="<?php echo $data['lang'] ?>" name="lang" class="form-control" placeholder="Enter language">
+                <label>Language:</label>
+                <input type="text" value="<?php echo $data['lang'] ?>" name="lang" class="form-control" placeholder="Enter language">
             </div>
             <div class="div">
-                    <label>Duration:</label>
-                    <input type="time" value="<?php echo $data['duration'] ?>"name="duration" class="form-control" placeholder="Enter Duration">
-            </div>
-            <div>
-                    <label>Genre</label>
-                    <select name="genre">
-                        <option value="action" <?php echo ($data['genre'] === 'action') ? 'selected' : ''; ?>>Action</option>
-                        <option value="scifi" <?php echo ($data['genre'] === 'scifi') ? 'selected' : ''; ?>>Sci-fi</option>
-                        <option value="horror" <?php echo ($data['genre'] === 'horror') ? 'selected' : ''; ?>>Horror</option>
-                        <option value="crime" <?php echo ($data['genre'] === 'crime') ? 'selected' : ''; ?>>Crime</option>
-                        <option value="comedy" <?php echo ($data['genre'] === 'comedy') ? 'selected' : ''; ?>>Comedy</option>
-                    </select>
+                <label>Duration:</label>
+                <input type="time" value="<?php echo $data['duration'] ?>" name="duration" class="form-control" placeholder="Enter Duration">
             </div>
             <div class="div">
-                    <label style="padding-left: 4rem;">Movie Image</label>
-                    <input type="file" name="image">
-                    <img class="img" src="<?php echo $data['image'] ?>" alt="">
+                <label>Trailer Link:</label>
+                <input type="text" value="<?php echo $data['trailer_link'] ?>" name="trailer_link" class="form-control" placeholder="Enter Trailer Link">
             </div>
-            
+            <div class="div">
+                <label>Movie Link:</label>
+                <input type="text" value="<?php echo $data['movie_link'] ?>" name="movie_link" class="form-control" placeholder="Enter Movie Link">
+            </div>
+            <div class="div">
+                <label>Genre</label>
+                <select name="genre">
+                    <option value="action" <?php echo ($data['genre'] === 'action') ? 'selected' : ''; ?>>Action</option>
+                    <option value="scifi" <?php echo ($data['genre'] === 'scifi') ? 'selected' : ''; ?>>Sci-fi</option>
+                    <option value="horror" <?php echo ($data['genre'] === 'horror') ? 'selected' : ''; ?>>Horror</option>
+                    <option value="crime" <?php echo ($data['genre'] === 'crime') ? 'selected' : ''; ?>>Crime</option>
+                    <option value="comedy" <?php echo ($data['genre'] === 'comedy') ? 'selected' : ''; ?>>Comedy</option>
+                </select>
+            </div>
+            <div class="div">
+                <label style="padding-left: 4rem;">Movie Image</label>
+                <input type="file" name="image">
+                <img class="img" src="<?php echo $data['image'] ?>" alt="">
+            </div>
+
             <button name="update">Update</button>
             <input type="hidden" name="id" value="<?php echo $data['id']; ?>">
         </form>
@@ -163,25 +208,26 @@
     <?php
     if (isset($_POST['update'])) {
         $id = $_POST['id'];
-        $movie_name=$_POST['mname'];
-        $movie_desc=$_POST['desc'];
-        $movie_dir=$_POST['dir'];
-        $movie_cast=$_POST['cast'];
-        $movie_date=$_POST['date'];
-        $movie_lang=$_POST['lang'];
-        $movie_duration=$_POST['duration'];
-        $movie_image=$_FILES['image'];
-        $image_loc=$_FILES['image']['tmp_name'];
-        $image_name=$_FILES['image']['name'];
-        $img_des="Uploadimage/".$image_name;
-        move_uploaded_file($image_loc,"Uploadimage/".$image_name);
-        $movie_genre=$_POST['genre'];
+        $movie_name = $_POST['mname'];
+        $movie_desc = $_POST['desc'];
+        $movie_dir = $_POST['dir'];
+        $movie_cast = $_POST['cast'];
+        $movie_date = $_POST['date'];
+        $movie_lang = $_POST['lang'];
+        $movie_duration = $_POST['duration'];
+        $trailer_link = $_POST['trailer_link'];
+        $movie_link = $_POST['movie_link'];
+        $movie_image = $_FILES['image'];
+        $image_loc = $_FILES['image']['tmp_name'];
+        $image_name = $_FILES['image']['name'];
+        $img_des = "Uploadimage/" . $image_name;
+        move_uploaded_file($image_loc, "Uploadimage/" . $image_name);
+        $movie_genre = $_POST['genre'];
 
         include '../../config.php';
-        mysqli_query($con, "UPDATE `cinematable` SET `mname`='$movie_name',`desc`='$movie_desc',`dir`='$movie_dir',`cast`='$movie_cast',`date`='$movie_date',`lang`='$movie_lang',`duration`='$movie_duration',`image`='$img_des',`genre`='$movie_genre' WHERE id=$id");
-        
+        mysqli_query($con, "UPDATE `cinematable` SET `mname`='$movie_name',`desc`='$movie_desc',`dir`='$movie_dir',`cast`='$movie_cast',`date`='$movie_date',`lang`='$movie_lang',`duration`='$movie_duration',`trailer_link`='$trailer_link',`movie_link`='$movie_link',`image`='$img_des',`genre`='$movie_genre' WHERE id=$id");
     }
     ?>
-    </body>
+</body>
 
 </html>

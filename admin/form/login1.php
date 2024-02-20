@@ -10,7 +10,7 @@ if(mysqli_num_rows($result)){
     echo"
     <script>
     alert('Login successfully');
-    window.location.href='../adminPanel.php';
+    window.location.href='../cinema/index.php';
     </script>
     ";
 }

@@ -584,7 +584,7 @@ session_start();
 
             // Function to start auto slide
             const startAutoSlide = () => {
-                slideInterval = setInterval(nextSlide, 5000); // Adjust slide transition time as needed
+                slideInterval = setInterval(nextSlide, 3000); // Adjust slide transition time as needed
             };
 
             // Function to pause auto slide
