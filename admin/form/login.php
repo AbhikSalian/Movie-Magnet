@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MovieMagnet - Admin Login</title>
+    <link rel="icon" type="image/x-icon" href="../../Favicon.png">
+
 </head>
 <style>
     .admin {
@@ -27,7 +29,7 @@
         display: block;
         margin-left: auto;
         margin-right: auto;
-        width: 50%;
+        width: 40%;
     }
 
     .adm p {
@@ -76,12 +78,13 @@
     }
 
     button {
-        padding: 10px 20px;
+        padding: 5px 15px;
         background-color: #161A30;
         color: white;
         border: none;
         cursor: pointer;
         margin-bottom: 10px;
+        border: 1px solid #161A30;
     }
 
     button:hover {
