@@ -238,7 +238,7 @@ session_start();
 
         button.slider__button:hover {
             border: 1px solid #161A30;
-            background: #31304D;
+            background: #0e0e16;
             color: #B6BBC4;
         }
 

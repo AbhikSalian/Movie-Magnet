@@ -105,11 +105,11 @@
         <form action="login1.php" method="POST" class="user-form">
             <div class="pad">
                 <label for="username">Username:</label>
-                <input type="text" name="name" id="username" class="form-control" placeholder="Enter Username">
+                <input type="text" name="name" id="username" class="form-control" placeholder="Enter Username" required>
             </div>
             <div class="pad">
                 <label for="password">Password:</label>
-                <input type="password" name="password" id="password" class="form-control" placeholder="Enter Password">
+                <input type="password" name="password" id="password" class="form-control" placeholder="Enter Password" required>
             </div>
             <div class="btn">
                 <button name="submit">Login</button>

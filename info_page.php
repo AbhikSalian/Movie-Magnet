@@ -475,7 +475,7 @@ session_start();
                             } else {
 
                                 echo "
-                                <a href='user/login.php'>Review</a>
+                                <a onclick='pleselogin()' href='user/login.php'>Review</a>
                                 ";
                             }
                             ?>
@@ -601,6 +601,10 @@ session_start();
                 document.getElementById('submitButton').disabled = false;
             });
         });
+
+        function pleselogin(){
+            alert("Please Login")
+        }
     </script>
 
 

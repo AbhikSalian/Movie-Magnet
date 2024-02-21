@@ -102,11 +102,11 @@
             </div>
             <div class="pad">
                 <label>Name:</label>
-                <input type="text" name="username" class="form-control" placeholder="Enter username">
+                <input type="text" name="username" class="form-control" placeholder="Enter username" required>
             </div>
             <div class="pad">
                 <label>Password:</label>
-                <input type="text" name="userpassword" class="form-control" placeholder="Enter password">
+                <input type="text" name="userpassword" class="form-control" placeholder="Enter password" required>
             </div>
             <div class="btn">
                 <button name="submit">Login</button>
