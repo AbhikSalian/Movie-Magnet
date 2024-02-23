@@ -1,4 +1,5 @@
 <?php
+include 'config.php';
 // Check if the form is submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Retrieve form data
@@ -9,7 +10,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
     // Insert review and rating into the database
-    $con = mysqli_connect('localhost', 'root', '', 'moviemagnet');
+    
     $query = "INSERT INTO reviews (movie_id,review_content, rating, timestamp, user_id) VALUES ('$movie_id','$review_content', '$rating', NOW(),'$user_id')";
     $result = mysqli_query($con, $query);
 

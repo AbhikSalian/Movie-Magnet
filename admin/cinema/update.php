@@ -1,4 +1,6 @@
-<!DOCTYPE html>
+<?php
+include '../../config.php';
+?><!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -226,7 +228,7 @@
         move_uploaded_file($image_loc, "Uploadimage/" . $image_name);
         $movie_genre = $_POST['genre'];
 
-        include '../../config.php';
+        
         mysqli_query($con, "UPDATE `cinematable` SET `mname`='$movie_name',`desc`='$movie_desc',`dir`='$movie_dir',`cast`='$movie_cast',`date`='$movie_date',`lang`='$movie_lang',`duration`='$movie_duration',`trailer_link`='$trailer_link',`movie_link`='$movie_link',`image`='$img_des',`genre`='$movie_genre' WHERE id=$id");
     }
     ?>

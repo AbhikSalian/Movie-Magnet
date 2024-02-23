@@ -316,7 +316,7 @@ session_start();
         $movieId = $_GET['movie_id'];
 
         // Connect to the database
-        $con = mysqli_connect('localhost', 'root', '', 'moviemagnet');
+        include 'config.php';
 
         // Check connection
         if (mysqli_connect_errno()) {
@@ -326,7 +326,7 @@ session_start();
 
         // Query to retrieve movie information based on the movie ID
         $query = "SELECT * FROM cinematable WHERE id = $movieId";
-
+        
         // Execute the query
         $result = mysqli_query($con, $query);
 
@@ -575,11 +575,6 @@ session_start();
         }
     }
     ?>
-
-
-
-
-
 
     <script>
         function validateForm() {

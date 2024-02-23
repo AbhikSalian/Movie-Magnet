@@ -1,5 +1,5 @@
 <?php
-$con=mysqli_connect('localhost','root','','moviemagnet');
+include '../../config.php';
 $A_name=$_POST['username'];
 $A_password=$_POST['userpassword'];
 $result=mysqli_query($con,"SELECT * FROM `admin` WHERE adminname='$A_name' AND adminpassword='$A_password'");

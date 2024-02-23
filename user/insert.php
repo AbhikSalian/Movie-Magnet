@@ -1,5 +1,5 @@
 <?php
-$con=mysqli_connect('localhost','root','','moviemagnet');
+include '../config.php';
     if(isset($_POST['submit'])){
         $Name=$_POST['name'];
         $Email=$_POST['email'];
