@@ -79,14 +79,16 @@
         background-color: #B6BBC4;
         padding: 5px 20px;
     }
+
     .delete {
         padding: 5px 20px;
         border: none;
-      
+
         border: 1px solid #820300;
         color: #820300;
         background: #FCF5ED;
     }
+
     .delete:hover {
         color: #F0ECE5;
         background: #820300;

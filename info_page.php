@@ -537,7 +537,7 @@ session_start();
                                 echo "<div class='new'><div class='reviewOn'>{$timeAgo}</div>";
                                 echo "<div class='ratingdis'";
 
-                                for ($i = 1; $i <= 5; $i++) {
+                                for ($i = 0; $i <= 5; $i++) {
                                     if ($i <= $row['rating']) {
                                         echo "<span class='star'></span>"; // Full star
                                     }

@@ -251,7 +251,7 @@
 
             <?php
             include '../../config.php';
-            $record = mysqli_query($con, "SELECT * FROM `cinematable`");
+            $record = mysqli_query($con, "SELECT * FROM `cinematable` ORDER BY `id` DESC");
             while ($row = mysqli_fetch_array($record))
                 echo "
                     <tr>

@@ -436,19 +436,19 @@ session_start();
             <div class="slides">
 
                 <div class="slide1">
-                    <img src="image.jpg" alt="Slide 1">
+                    <img src="banner1.jpg" alt="Slide 1">
                 </div>
                 <div class="slide1">
-                    <img src="image.jpg" alt="Slide 2">
+                    <img src="banner2.jpg" alt="Slide 2">
                 </div>
                 <div class="slide1">
-                    <img src="image.jpg" alt="Slide 3">
+                    <img src="banner3.jpg" alt="Slide 3">
                 </div>
                 <div class="slide1">
-                    <img src="image.jpg" alt="Slide 4">
+                    <img src="banner4.jpg" alt="Slide 4">
                 </div>
                 <div class="slide1">
-                    <img src="image.jpg" alt="Slide 5">
+                    <img src="banner5.jpg" alt="Slide 5">
                 </div>
                 <!-- Add more slides as needed -->
             </div>
