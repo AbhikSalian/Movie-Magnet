@@ -1,7 +1,7 @@
 <?php
 
  $Name=$_POST['name'];
- $Password=$_POST['password'] ;
+ $Password=md5($_POST['password']);
  $con=mysqli_connect('localhost','root','','moviemagnet');
  $result = mysqli_query($con, "SELECT id, username, email FROM `user` WHERE (username='$Name' OR email='$Name') AND Userpassword='$Password'");
 

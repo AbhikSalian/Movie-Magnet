@@ -4,7 +4,7 @@ $con=mysqli_connect('localhost','root','','moviemagnet');
         $Name=$_POST['name'];
         $Email=$_POST['email'];
         $Number=$_POST['number'];
-        $Password=$_POST['password'];
+        $Password=md5($_POST['password']);
         
     $dup_email=mysqli_query($con,"SELECT * FROM `user` WHERE Email='$Email'");
     $dup_username=mysqli_query($con,"SELECT * FROM `user` WHERE Username='$Name'");

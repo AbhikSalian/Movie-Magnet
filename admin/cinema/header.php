@@ -1,7 +1,8 @@
 <?php
 session_start();
+include 'admin_login_check.php';
 if (!$_SESSION['admin']) {
-    header("location:form/login.php");
+    header("location:../form/login.php");
 }
 ?>
 <!DOCTYPE html>
