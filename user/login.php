@@ -8,6 +8,14 @@
     <link rel="icon" type="image/x-icon" href="../Favicon.png">
 
     <style>
+         @font-face {
+            font-family: 'hii';
+            src: url('../fonts/TT-Norms-sv/TT Norms sv/TTNorms-Regular.otf');
+        }
+        *{
+            font-family: 'hii';
+
+        }
         body {
             font-family: Arial, sans-serif;
             background-color: #B6BBC4;

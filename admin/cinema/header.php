@@ -20,90 +20,10 @@ if (!$_SESSION['admin']) {
 
 </head>
 <style>
-    /* html{
-        font-size:62.5% ;
-    }
-    body {
-        font-size: 1.6rem;
-        margin: 0;
-        padding: 0;
-        font-family: 'Arial', sans-serif;
-        background-color: #f8f9fa;
-        color: #343a40;
-    }
-
-    .nav {
-        background-color: white;
-        color: #343a40;
-        padding: 1rem 0;
-        margin-bottom: 2rem;
-        text-align: center;
-        box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-        height: 5rem;
-    }
-
-    .ndiv {
-        width: 90%;
-        margin: 0 auto;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-
-    .head h1 {
-        margin: 0;
-        font-size: 2rem;
-        font-weight: bold;
-        color: #343a40;
-    }
-
-    .bar {
-        display: flex;
-        align-items: center;
-    }
-
-    .bar div,
-    .bar a {
-        margin: 0 1rem;
-        color: #343a40;
-        text-decoration: none;
-        transition: color 0.3s ease;
-    }
-
-    .bar a:hover {
-        color: #3498db;
-    }
-
-    h2 {
-        text-align: center;
-        margin-bottom: 2rem;
-        font-size: 2.5rem;
-        color: #343a40;
-    }
-
-    .chadmi {
-        display: flex;
-        justify-content: space-around;
-        margin-bottom: 40px;
-    }
-
-    .chadmi a {
-        text-decoration: none;
-        color: white;
-        background-color: #3498db;
-        padding: 1.5rem 3rem;
-        border-radius: 5px;
-        transition: background-color 0.3s ease, transform .2s ease;
-    }
-
-    .chadmi a:hover {
-        background-color: #2980b9;
-        transform: scale(1.1);
-    } */
-    @font-face {
-        font-family: 'hii';
-        src: url('fonts/TT-Norms-sv/TT Norms sv/TTNorms-Regular.otf');
-    }
+      @font-face {
+            font-family: 'hii';
+            src: url('../../fonts/TT-Norms-sv/TT Norms sv/TTNorms-Regular.otf');
+        }
 
     * {
         margin: 0;

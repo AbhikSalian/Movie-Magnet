@@ -9,6 +9,14 @@
 
 </head>
 <style>
+     @font-face {
+            font-family: 'hii';
+            src: url('../../fonts/TT-Norms-sv/TT Norms sv/TTNorms-Regular.otf');
+        }
+        *{
+            font-family: 'hii';
+
+        }
     .admin {
         border: 2px solid black;
         border-radius: 10px;

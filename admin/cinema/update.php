@@ -11,6 +11,14 @@ include '../../config.php';
 
 </head>
 <style>
+      @font-face {
+            font-family: 'hii';
+            src: url('../../fonts/TT-Norms-sv/TT Norms sv/TTNorms-Regular.otf');
+        }
+        *{
+            font-family: 'hii';
+
+        }
     body {
         display: flex;
         justify-content: center;
