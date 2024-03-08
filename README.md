@@ -21,20 +21,6 @@ The MovieMagnet is a web application designed to manage and display information 
 - Configure the database connection settings in the "config.php" file.
 - Open the project in a web server environment (XAMPP).
 - Access the application through your web browser.## Acknowledgments
-## Screenshots
-
-![Screenshot 2024-02-26 230554](https://github.com/AkashAcharya03/Movie-Magnet/assets/109788904/d9cd3b32-9798-4cc3-a69a-950627c5526c)
-![Screenshot 2024-02-26 230042](https://github.com/AkashAcharya03/Movie-Magnet/assets/109788904/51c81682-bba8-4c9f-8e53-7be197d2c7a7)
-![Screenshot 2024-02-26 225606](https://github.com/AkashAcharya03/Movie-Magnet/assets/109788904/d12e10bc-8842-49b1-8f15-2282263436d5)
-![Screenshot 2024-02-26 225554](https://github.com/AkashAcharya03/Movie-Magnet/assets/109788904/70a28721-ff54-4f59-abe2-6a928d9874ed)
-![Screenshot 2024-02-26 225541](https://github.com/AkashAcharya03/Movie-Magnet/assets/109788904/ce221a2e-4cc5-47ed-893c-9d7786168897)
-![Screenshot 2024-02-26 225528](https://github.com/AkashAcharya03/Movie-Magnet/assets/109788904/b4cb49cd-faf4-445a-8f72-490e7cbf741c)
-![Screenshot 2024-02-26 225511](https://github.com/AkashAcharya03/Movie-Magnet/assets/109788904/b739afe2-5a58-4a11-b3b2-c77e29f13c67)
-![Screenshot 2024-02-26 225437](https://github.com/AkashAcharya03/Movie-Magnet/assets/109788904/c7fbe8d8-49ea-4c0b-926e-764108c19a58)
-![Screenshot 2024-02-26 225425](https://github.com/AkashAcharya03/Movie-Magnet/assets/109788904/0f6282b7-7616-4d9b-abcf-fd843416db47)
-![Screenshot 2024-02-26 225352](https://github.com/AkashAcharya03/Movie-Magnet/assets/109788904/ee09074b-6f6c-416e-a09c-f29f7c1b70ba)
-![Screenshot 2024-02-26 225320](https://github.com/AkashAcharya03/Movie-Magnet/assets/109788904/877cdac7-cc25-4792-b5d0-f38892d9e29c)
-
 ## Acknowledgments
 
 I would like to express my gratitude to the following individuals for their support and contributions to this project:
