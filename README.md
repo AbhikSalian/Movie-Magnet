@@ -23,6 +23,7 @@ The MovieMagnet is a web application designed to manage and display information 
 - Configure the database connection settings in the "config.php" file.
 - Open the project in a web server environment (XAMPP).
 - Access the application through your web browser.## Acknowledgments
+## Acknowledgments
 
 I would like to express my gratitude to the following individuals for their support and contributions to this project:
 
